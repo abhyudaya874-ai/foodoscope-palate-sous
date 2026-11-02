@@ -66,7 +66,11 @@ export function pickModel(
   const hasKey = opts.hasKey ?? ((p: ProviderId) => providerKey(p) !== undefined);
   for (const cand of ROLE_ROUTES[role]) {
     if (!hasKey(cand.provider)) continue;
-    const models = chatModels(cachedModels(cand.provider, opts.fixturesDir));
+    let models = chatModels(cachedModels(cand.provider, opts.fixturesDir));
+    if (cand.provider === "openrouter") {
+      const free = models.filter((m) => m.endsWith(":free"));
+      if (free.length > 0) models = free;
+    }
     if (models.length === 0) continue;
     for (const re of cand.prefer ?? []) {
       const hit = models.find((m) => re.test(m));
@@ -82,7 +86,12 @@ export function candidatesForRole(role: Role, opts: { fixturesDir?: string; hasK
   const out: ModelPick[] = [];
   for (const cand of ROLE_ROUTES[role]) {
     if (!hasKey(cand.provider)) continue;
-    const models = chatModels(cachedModels(cand.provider, opts.fixturesDir));
+    let models = chatModels(cachedModels(cand.provider, opts.fixturesDir));
+    if (cand.provider === "openrouter") {
+      // free tiers only (":free" ids); fall back to the full list only if no free model exists
+      const free = models.filter((m) => m.endsWith(":free"));
+      if (free.length > 0) models = free;
+    }
     if (models.length === 0) continue;
     const preferred = (cand.prefer ?? []).map((re) => models.find((m) => re.test(m))).find(Boolean);
     out.push({ provider: cand.provider, model: preferred ?? models[0], fellBack: !preferred });

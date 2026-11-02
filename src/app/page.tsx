@@ -1,5 +1,7 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { CopyIcon, RefreshCwIcon, ThumbsUpIcon, ThumbsDownIcon } from "lucide-react";
+import type { SourceRow } from "@/components/ai-elements/sources";
 import { useRunStream } from "@/lib/ui/useRunStream";
 import { mapEvents } from "@/lib/ui/eventToView";
 import { Chat, Message, ChainOfThought, FileTree } from "@/components/ai-elements/chat";
@@ -26,7 +28,15 @@ export default function Home() {
   const [effort, setEffort] = useState<"low" | "medium" | "high">("low");
   const [mode, setMode] = useState<"live" | "replay">("replay");
   const [goal, setGoal] = useState("");
+  const [openSrc, setOpenSrc] = useState<number | null>(null);
+  const [webSources, setWebSources] = useState<SourceRow[]>([]);
+  const [providerInfo, setProviderInfo] = useState<{ available?: string }>({});
   const items = useMemo(() => mapEvents(messages), [messages]);
+
+  useEffect(() => {
+    fetch("/api/providers").then((r) => r.json()).then((d) => setProviderInfo(d)).catch(() => {});
+    fetch("/api/sources").then((r) => r.json()).then((d) => setWebSources(d.rows ?? [])).catch(() => {});
+  }, []);
 
   const patches = items.filter((i) => i.kind === "patch");
   const csvs = items.filter((i) => i.kind === "csv");
@@ -34,23 +44,27 @@ export default function Home() {
   const tests: TestRow[] = testRowsFrom(items);
   const reasoning = items.filter((i) => i.kind === "reasoning").map((i) => i.detail).join("\n");
   const planSteps = planStepsFrom(items);
-  const sources = sourcesFrom(items);
+  const probeSources = sourcesFrom(items);
+  // real web evidence (Tavily/Exa cache + browser facts) merged after probe receipts
+  const sources = [...probeSources, ...webSources.map((r) => ({ ...r, n: probeSources.length + r.n }))];
   const lines = terminalLinesFrom(items);
   const provider = lastProvider(items);
-  const health: Health = provider.provider ? "ok" : "none";
+  const health: Health = provider.provider ? "ok" : providerInfo.available ? "ok" : "none";
+  const shownProvider = provider.provider ?? providerInfo.available;
   const toolsUsed = items.filter((i) => ["tool", "probe", "test"].includes(i.kind)).length;
   const xpTotal = items.filter((i) => i.kind === "xp").reduce((a, i) => a + Number((i.data as { amount?: number }).amount ?? 0), 0);
   const sous = useMemo(() => deriveSous(messages), [messages]);
   const hasRun = items.length > 0;
 
+  const cite = (n: number) => `[${n}]`;
   const answer = hasRun
-    ? `Run complete: ${probes.length} endpoints probed, ${tests.length} test rows, +${xpTotal} XP derived from the event log.`
+    ? `Run complete: ${probes.length} endpoints probed with recorded fixtures ${probes.slice(0, 2).map((_, i) => cite(i + 1)).join(" ")}, ${tests.length} test rows, +${xpTotal} XP derived from the event log. ${webSources.length} live web receipts (Tavily/Exa/browser) back the rival and claim checks ${webSources.length ? cite(probeSources.length + 1) : ""}.`
     : "";
 
   return (
     <div className="flex h-screen flex-col bg-bg-0 text-text-1">
       <TopBar
-        provider={provider.provider} model={provider.model} health={health} latencyMs={provider.latencyMs}
+        provider={shownProvider} model={provider.model} health={health} latencyMs={provider.latencyMs}
         effort={effort} onEffort={setEffort} mode={mode} onMode={setMode}
         toolsUsed={toolsUsed} toolsCap={40} onRun={() => play(4)} running={running}
       />
@@ -58,6 +72,12 @@ export default function Home() {
         <aside className="hidden w-60 shrink-0 border-r border-line-1 bg-bg-0 md:block" aria-label="Sous profile">
           <RailCard profile={sous} queueLeft={Math.max(0, planSteps.filter((s) => s.status === "pending").length)} queueDone={planSteps.filter((s) => s.status === "done").length} />
         </aside>
+        <div className="flex items-center gap-2 border-b border-line-1 px-3 py-1.5 md:hidden" aria-label="Sous profile compact">
+          <span className="grid size-6 place-items-center rounded-full border border-accent bg-bg-2 text-[11px] font-semibold text-accent" aria-hidden>S</span>
+          <span className="text-[12px] font-medium">Sous #1</span>
+          <span className="rounded border border-accent/40 bg-accent-dim px-1.5 py-0.5 text-[10px] text-accent">{sous.rank}</span>
+          <span className="tnum ml-auto text-[10px] text-text-2">{sous.xp} XP · {sous.streak}d streak</span>
+        </div>
 
         <main className="flex min-w-0 flex-1 flex-col" aria-label="conversation">
           {!hasRun && !running ? (
@@ -91,12 +111,17 @@ export default function Home() {
                     <div className="settle flex flex-col gap-2">
                       <p className="text-[14px] leading-6 text-text-1">
                         {answer.split(/(\[\d+\])/).map((part, i) =>
-                          /^\[\d+\]$/.test(part) ? <InlineCitation key={i} n={Number(part.slice(1, -1))} /> : <span key={i}>{part}</span>,
+                          /^\[\d+\]$/.test(part) ? <InlineCitation key={i} n={Number(part.slice(1, -1))} onOpen={(n) => setOpenSrc(n)} /> : <span key={i}>{part}</span>,
                         )}
                       </p>
                       <div className="settle-2 flex items-center gap-2">
-                        <Sources rows={sources} />
-                        <span className="text-[11px] text-text-3">copy · regenerate · 👍 👎</span>
+                        <Sources rows={sources} openSignal={openSrc} />
+                        <div className="ml-auto flex items-center gap-1">
+                          <button aria-label="copy answer" className="grid size-6 place-items-center rounded-md text-text-3 hover:bg-bg-2 hover:text-text-1"><CopyIcon className="size-3.5" /></button>
+                          <button aria-label="regenerate" className="grid size-6 place-items-center rounded-md text-text-3 hover:bg-bg-2 hover:text-text-1"><RefreshCwIcon className="size-3.5" /></button>
+                          <button aria-label="helpful" className="grid size-6 place-items-center rounded-md text-text-3 hover:bg-bg-2 hover:text-text-1"><ThumbsUpIcon className="size-3.5" /></button>
+                          <button aria-label="not helpful" className="grid size-6 place-items-center rounded-md text-text-3 hover:bg-bg-2 hover:text-text-1"><ThumbsDownIcon className="size-3.5" /></button>
+                        </div>
                       </div>
                       <div className="settle-3 flex flex-wrap gap-2">
                         {["show the crosswalk", "what's confirmed?", "open the bug report"].map((s) => (

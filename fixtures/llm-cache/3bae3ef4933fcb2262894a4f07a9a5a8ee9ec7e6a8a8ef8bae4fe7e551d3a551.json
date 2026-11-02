@@ -1,0 +1,1 @@
+{"text":"{\"ok\": true}","usage":{"tokensIn":11,"tokensOut":52},"model":"cohere/north-mini-code:free","provider":"openrouter","latencyMs":1939,"cache":false,"fallback":true}
