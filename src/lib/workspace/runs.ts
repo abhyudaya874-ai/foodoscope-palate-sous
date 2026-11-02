@@ -59,7 +59,10 @@ export async function replayInto(chan: RunChannel, file: string, speed = 1, sign
   for (const m of msgs) {
     if (signal?.aborted) break;
     const t = Date.parse(m.ts);
-    const delay = lastTs === null || Number.isNaN(t) ? 200 : Math.min(2500, Math.max(60, (t - lastTs) / speed));
+    // recorded gaps are ms-scale; give each event type a watchable minimum so the run reads like live work
+    const MIN: Record<string, number> = { plan: 600, "reasoning.delta": 1400, "tool.start": 700, probe: 1100, "tool.end": 600, "file.patch": 900, "csv.upsert": 900, "test.result": 1500, "confirm.request": 900, xp: 500, budget: 150, done: 400 };
+    const gap = lastTs === null || Number.isNaN(t) ? 0 : Math.max(0, t - lastTs);
+    const delay = Math.min(3000, Math.max(MIN[m.type] ?? 300, gap)) / speed;
     if (!Number.isNaN(t)) lastTs = t;
     await new Promise((r) => setTimeout(r, delay));
     chan.push(m.type, m.data);

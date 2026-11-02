@@ -38,13 +38,15 @@ export function Message({ children, from }: { children: React.ReactNode; from: "
 export function ChainOfThought({ count, durationMs, children, running }: {
   count: number; durationMs?: number; children: React.ReactNode; running?: boolean;
 }) {
-  const [open, setOpen] = React.useState(!!running);
+  const [userOpen, setUserOpen] = React.useState<boolean | undefined>(undefined);
+  const open = userOpen ?? !!running;
   return (
-    <Collapsible open={open} onOpenChange={setOpen} className="rounded-md border border-line-1 bg-bg-1">
-      <CollapsibleTrigger className="flex w-full items-center gap-2 px-2.5 py-1.5 text-[12px] text-text-1 hover:bg-bg-2">
+    <Collapsible open={open} onOpenChange={setUserOpen} className="rounded-lg border border-line-1 bg-bg-1">
+      <CollapsibleTrigger className="flex w-full items-center gap-2 px-3 py-2 text-[12px] text-text-1 hover:bg-bg-2">
         <ChevronDownIcon className={cn("size-3 text-text-3 transition-transform", !open && "-rotate-90")} />
-        <span>Steps</span>
+        <span className="font-medium">{running ? "Working" : "Steps"}</span>
         <span className="tnum text-text-3">· {count}</span>
+        {running && <span className="live-pulse size-1.5 rounded-full bg-accent" aria-hidden />}
         {durationMs !== undefined && <span className="tnum text-text-3">· {(durationMs / 1000).toFixed(1)}s</span>}
       </CollapsibleTrigger>
       <CollapsibleContent className="border-t border-line-1 px-2.5 py-2">{children}</CollapsibleContent>

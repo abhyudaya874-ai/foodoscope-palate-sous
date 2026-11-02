@@ -90,3 +90,43 @@ export function lastProvider(items: ViewItem[]): { provider?: string; model?: st
   const [provider, model] = llm.badge.split("/");
   return { provider, model, latencyMs: llm.latencyMs };
 }
+
+export interface TestRun { suite: string; before?: { passed: number; failed: number }; after?: { passed: number; failed: number }; standalone?: { passed: number; failed: number } }
+
+/** Group test.result events per suite as before → after (real counts from the recorded runs). */
+export function testRunsFrom(items: ViewItem[]): TestRun[] {
+  const map = new Map<string, TestRun>();
+  for (const i of items.filter((x) => x.kind === "test")) {
+    const d = i.data as { suite?: string; passed?: number; failed?: number; phase?: string };
+    if (typeof d.passed !== "number") continue;
+    const suite = String(d.suite ?? i.title);
+    const run = map.get(suite) ?? { suite };
+    const c = { passed: d.passed, failed: d.failed ?? 0 };
+    if (d.phase === "before") run.before = c; else if (d.phase === "after") run.after = c; else run.standalone = c;
+    map.set(suite, run);
+  }
+  return [...map.values()];
+}
+
+export interface Change { path: string; before: string; after: string; added: number; removed: number; unchanged: boolean; lines: number; status?: string }
+
+function lineDelta(before: string, after: string) {
+  const b = before.split("\n"), a = after.split("\n");
+  const bs = new Set(b), as = new Set(a);
+  return { added: a.filter((l) => !bs.has(l)).length, removed: b.filter((l) => !as.has(l)).length, lines: a.length };
+}
+
+/** One entry per path (last event wins), with real +N −M from diffStats or computed from before/after. */
+export function changesFrom(items: ViewItem[]): Change[] {
+  const map = new Map<string, Change>();
+  for (const p of items.filter((x) => x.kind === "patch")) {
+    const d = p.data as { before?: string; after?: string; diffStats?: { added: number; removed: number }; added?: number; removed?: number; status?: string };
+    const prev = map.get(p.title);
+    const before = d.before ?? prev?.before ?? "";
+    const after = d.after ?? prev?.after ?? "";
+    const computed = lineDelta(before, after);
+    const stats = d.diffStats ?? (typeof d.added === "number" && (d.added || d.removed) ? { added: d.added, removed: d.removed ?? 0 } : computed);
+    map.set(p.title, { path: p.title, before, after, added: stats.added, removed: stats.removed, unchanged: before === after && !d.diffStats, lines: computed.lines, status: d.status ?? prev?.status });
+  }
+  return [...map.values()];
+}

@@ -1,0 +1,72 @@
+{
+ "task": "rival",
+ "startedAt": "2026-11-02T17:28:22.952Z",
+ "viewport": {
+  "w": 1280,
+  "h": 800
+ },
+ "frames": [
+  {
+   "n": 0,
+   "url": "https://spoonacular.com/food-api",
+   "title": "spoonacular recipe and food API",
+   "from": {
+    "x": 0.1,
+    "y": 0.1
+   },
+   "cursor": {
+    "x": 0.61328125,
+    "y": 0.06849609375
+   },
+   "action": "click",
+   "thought": "Click the PRICING link to find pricing details."
+  },
+  {
+   "n": 1,
+   "url": "https://spoonacular.com/food-api/pricing",
+   "title": "spoonacular recipe and food API",
+   "from": {
+    "x": 0.61328125,
+    "y": 0.06849609375
+   },
+   "cursor": {
+    "x": 0.611328125,
+    "y": 0.06849609375
+   },
+   "action": "extract",
+   "thought": "Pricing text is visible. Extract it.",
+   "key": "pricing"
+  },
+  {
+   "n": 2,
+   "url": "https://spoonacular.com/food-api/pricing",
+   "title": "spoonacular recipe and food API",
+   "from": {
+    "x": 0.611328125,
+    "y": 0.06849609375
+   },
+   "cursor": {
+    "x": 0.5,
+    "y": 0.45
+   },
+   "action": "done",
+   "thought": "Pricing and free-tier details are already extracted.",
+   "result": "Spoonacular Food API pricing: Free $0/mo (50 points/day, 1 req/s, 2 concurrent, forum support, backlink required); Cook $29/mo (1,500 pts/day then $0.005/pt, 5 req/s, 5 concurrent, email support, 99% SLA); Culinarian $79/mo (4,500 pts/day then $0.004/pt, 10 req/s, 10 concurrent, email support, 99% SLA); Chef $149/mo (10,000 pts/day then $0.002/pt, 20 req/s, 20 concurrent, phone support, 99.9% SLA); Enterprise from $300. Prices exclude tax; plans are month-to-month and cancellable anytime."
+  },
+  {
+   "n": 3,
+   "url": "https://spoonacular.com/food-api/pricing",
+   "title": "spoonacular recipe and food API",
+   "from": {
+    "x": 0.5,
+    "y": 0.45
+   },
+   "cursor": {
+    "x": 0.5,
+    "y": 0.45
+   },
+   "action": "settled",
+   "thought": ""
+  }
+ ]
+}

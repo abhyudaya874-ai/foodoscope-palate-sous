@@ -80,7 +80,7 @@ export function Confirmation({ summary, state, onApprove, onDeny }: {
           <button onClick={onDeny} className="rounded-md border border-line-1 px-2.5 py-1 text-[11px] text-text-2 hover:text-text-1">Deny</button>
         </div>
       ) : (
-        <div className="pt-1 text-[11px] text-text-3">{state === "approved" ? "Approved — applied with receipt." : "Denied — nothing was written."}</div>
+        <div className="pt-1 text-[11px] text-text-3">{state === "approved" ? "Auto-approved in replay — applied with receipt." : "Denied — nothing was written."}</div>
       )}
     </div>
   );
@@ -117,6 +117,37 @@ export function EmptyHint({ text, example }: { text: string; example?: string })
     <div className="rounded-md border border-dashed border-line-1 p-4 text-center">
       <p className="text-[12px] text-text-2">{text}</p>
       {example && <p className="pt-1 font-mono text-[10px] text-text-3">e.g. {example}</p>}
+    </div>
+  );
+}
+
+function TestBar({ label, c }: { label: string; c: { passed: number; failed: number } }) {
+  const total = Math.max(1, c.passed + c.failed);
+  return (
+    <div className="flex items-center gap-2 text-[12px]">
+      <span className="w-20 text-text-3">{label}</span>
+      <span className="flex h-1.5 flex-1 overflow-hidden rounded-full bg-bg-2" aria-hidden>
+        <span className="bg-accent" style={{ width: `${(c.passed / total) * 100}%` }} />
+        <span className="bg-danger" style={{ width: `${(c.failed / total) * 100}%` }} />
+      </span>
+      <span className="tnum w-28 text-right"><span className="text-accent">{c.passed} passed</span> · <span className={c.failed ? "text-danger" : "text-text-3"}>{c.failed} failed</span></span>
+    </div>
+  );
+}
+
+/** Test Results card: before → after red→green with counts and a bar. */
+export function TestRunCard({ suite, before, after, standalone }: {
+  suite: string; before?: { passed: number; failed: number }; after?: { passed: number; failed: number }; standalone?: { passed: number; failed: number };
+}) {
+  return (
+    <div className="flex flex-col gap-1.5 rounded-lg border border-line-1 bg-bg-1 p-3">
+      <div className="flex items-center gap-2">
+        <span className="font-mono text-[11px] text-text-1">{suite}</span>
+        {before && after && before.failed > 0 && after.failed === 0 && <span className="rounded border border-accent/40 bg-accent-dim px-1.5 text-[10px] text-accent">red → green</span>}
+      </div>
+      {before && <TestBar label="before shim" c={before} />}
+      {after && <TestBar label="after shim" c={after} />}
+      {standalone && <TestBar label="run" c={standalone} />}
     </div>
   );
 }

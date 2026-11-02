@@ -23,6 +23,15 @@
   --color-accent: var(--accent); --color-accent-dim: var(--accent-dim);
   --color-warn: var(--warn); --color-warn-dim: var(--warn-dim);
   --color-danger: var(--danger); --color-danger-dim: var(--danger-dim);
+  /* aliases so vendored shadcn components resolve to our tokens */
+  --color-background: var(--bg-0); --color-foreground: var(--text-1);
+  --color-card: var(--bg-1); --color-card-foreground: var(--text-1);
+  --color-popover: var(--bg-1); --color-popover-foreground: var(--text-1);
+  --color-muted: var(--bg-2); --color-muted-foreground: var(--text-2);
+  --color-border: var(--line-1); --color-input: var(--line-1); --color-ring: var(--accent);
+  --color-primary: var(--accent); --color-primary-foreground: var(--bg-0);
+  --color-secondary: var(--bg-2); --color-secondary-foreground: var(--text-1);
+  --color-destructive: var(--danger);
   --radius-sm: var(--r-sm); --radius-md: var(--r-md); --radius-lg: var(--r-lg);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;

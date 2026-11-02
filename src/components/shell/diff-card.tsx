@@ -19,18 +19,24 @@ function diffLines(before: string, after: string) {
   return rows;
 }
 
-export function DiffCard({ title, before, after }: { title: string; before: string; after: string }) {
+export function DiffCard({ title, before, after, added: addedProp, removed: removedProp, unchanged, lines }: { title: string; before: string; after: string; added?: number; removed?: number; unchanged?: boolean; lines?: number }) {
   const [open, setOpen] = React.useState(false);
   const rows = React.useMemo(() => diffLines(before, after), [before, after]);
-  const added = rows.filter((r) => r.kind === "add").length;
-  const removed = rows.filter((r) => r.kind === "del").length;
+  const added = addedProp ?? rows.filter((r) => r.kind === "add").length;
+  const removed = removedProp ?? rows.filter((r) => r.kind === "del").length;
   return (
     <Collapsible open={open} onOpenChange={setOpen} className="overflow-hidden rounded-md border border-line-1 bg-bg-1">
       <CollapsibleTrigger className="flex w-full items-center gap-2 px-2.5 py-1.5 text-left text-[12px] hover:bg-bg-2">
         <ChevronRightIcon className={cn("size-3 text-text-3 transition-transform", open && "rotate-90")} />
         <span className="min-w-0 flex-1 truncate font-mono text-[11px] text-text-1">{title}</span>
-        <span className="tnum text-[10px] text-accent">+{added}</span>
-        <span className="tnum text-[10px] text-danger">−{removed}</span>
+        {unchanged ? (
+          <span className="tnum rounded border border-line-1 px-1.5 text-[10px] text-text-3">re-verified · {lines ?? rows.length} lines · no change</span>
+        ) : (
+          <>
+            <span className="tnum text-[10px] text-accent">+{added}</span>
+            <span className="tnum text-[10px] text-danger">−{removed}</span>
+          </>
+        )}
       </CollapsibleTrigger>
       <CollapsibleContent>
         <pre className="max-h-64 overflow-auto border-t border-line-1 p-2 font-mono text-[10px] leading-4">

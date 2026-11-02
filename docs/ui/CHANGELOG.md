@@ -19,3 +19,18 @@ Before: `docs/ui/before/` · After: `docs/ui/after/` · Spec: `docs/ui/DESIGN_SP
 - The official AI Elements are now *patterns* composed from registry base components (the docs' own code uses `Trace`/`Message`/`Bubble`). We vendored the official base components byte-for-byte from `ui.shadcn.com/r/styles/base-rhea/*.json` and implemented the patterns following each docs page's code, wired through `adapters.ts`. Demo scaffolding (`useChat`/`createChat`) was not adopted — our event stream is the source.
 - axe/Lighthouse: not run (time box); manual a11y implemented: focus-visible rings, aria-labels, roles, reduced-motion, keyboard send path.
 - Business logic untouched: `src/lib/agent`, `src/lib/llm`, `src/lib/foodoscope`, `src/app/api/**` have zero diffs in this change (presentation + `adapters.ts` + `derive.ts` gained `nextRankName`).
+
+## Round 2 (Perplexity + Devin pass)
+| Request | Change | Proof |
+|---|---|---|
+| Run finished instantly | Replay paced per event type (`MIN` table in `runs.ts`): ~45 s for the same recorded run; reasoning narration types in (typewriter) | after/03-tools.png |
+| Real thinking streaming | `POST /api/think` streams real token-by-token reasoning from a free-tier provider (groq `gpt-oss-120b`); shown as "Thought · groq/gpt-oss-120b · live · 7.3s", then the recorded tool run follows | after/03-tools.png |
+| Tool calls visible | Steps card is open while working (spinner row, plan cards pending → running → done), collapses to "Steps · N · Xs" when finished | after/03, 07 |
+| "5 passed · 0 failed" / zeros | Tests grouped as before → after (3 passed·2 failed → 5 passed·0 failed, red→green bar) inline in chat + Tests tab. Diff `+0 −0` replaced: real `+21 −0` for the new report; idempotent re-writes labelled "re-verified · N lines · no change"; duplicate bug-h2.md rows merged | after/10-changes.png |
+| Tests in a suitable place | Inline Test Results card in the thread + dedicated Tests tab | after/04, 07 |
+| Comet-style agentic browser | Browser tab: window chrome + URL bar, REAL page screenshots and element bounding boxes captured by `scripts/browser-capture.ts` from the recorded decisions; animated cursor, click ripple, extract highlight, typed thought, REPLAY label; auto-follows when the run finishes | after/05, 06, 07 |
+| Sources popover scrolled the page | Height-bounded, internal scroll (`overscroll-contain`), provider filters (ALL/API/TAVILY/EXA/BROWSER/VERIFY), host + link per row | after/08-sources.png |
+| Right pane auto-follow | Tab follows the live step (Plan → Terminal → Changes → Tests → Browser); clicking pins, "follow live" resumes | after/03-06 |
+| Gross layout | Perplexity-style thread: goal title → Steps → test card → answer with inline [n] → sources chip → Related; Devin-style live right pane | after/07-finished.png |
+
+Notes: replay auto-approvals are labelled ("Auto-approved in replay"). No LLM text is fabricated: the live thought is the model's own stream; the plan narration is labelled "Sous narration · replay".
