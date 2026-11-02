@@ -1,0 +1,1 @@
+{"text":"{\"thought\":\"Pricing text is visible. Extract it.\",\"action\":{\"extract\":{\"key\":\"pricing\",\"ref\":\"e4\"}}}","usage":{"tokensIn":1108,"tokensOut":27},"model":"qwen/qwen3.8-27b","provider":"groq","latencyMs":444,"cache":false,"fallback":false}

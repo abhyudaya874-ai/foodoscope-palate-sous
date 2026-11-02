@@ -69,7 +69,7 @@ export async function complete(input: CompleteInput, deps: GatewayDeps = {}): Pr
       };
       deps.budget?.takeLlm(input.role, result.usage.tokensIn + result.usage.tokensOut);
       mkdirSync(cacheDir, { recursive: true });
-      writeFileSync(cacheFile, JSON.stringify(result));
+      if (result.text.trim()) writeFileSync(cacheFile, JSON.stringify(result)); // never cache empty responses
       deps.bus?.emit("llm.call", { provider: result.provider, model: result.model }, {
         role: input.role, provider: result.provider, model: result.model,
         tokensIn: result.usage.tokensIn, tokensOut: result.usage.tokensOut,

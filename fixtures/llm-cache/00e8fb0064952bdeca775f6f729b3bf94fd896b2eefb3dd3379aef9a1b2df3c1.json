@@ -1,0 +1,1 @@
+{"text":"{\"thought\":\"Extract FlavorDB and RecipeDB counts from page text.\",\"action\":{\"extract\":{\"key\":\"flavordb_count\",\"ref\":\"e1\"}}}","usage":{"tokensIn":892,"tokensOut":32},"model":"qwen/qwen3.8-27b","provider":"groq","latencyMs":473,"cache":false,"fallback":false}

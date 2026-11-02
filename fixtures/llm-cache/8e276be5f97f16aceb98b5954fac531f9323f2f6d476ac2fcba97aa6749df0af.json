@@ -1,0 +1,1 @@
+{"text":"{\"thought\":\"Need to find ingredient count. Let me explore the site first.\",\"action\":{\"goto\":\"https://foodoscope.com\"}}","usage":{"tokensIn":210,"tokensOut":27},"model":"qwen/qwen3.8-27b","provider":"groq","latencyMs":2354,"cache":false,"fallback":false}

@@ -1,0 +1,1 @@
+{"text":"{\"thought\":\"Need to navigate to Foodoscope docs to find ingredient count and API rate-limit text.\",\"action\":{\"type\":\"goto\",\"url\":\"https://www.foodoscope.com/docs\"}}","usage":{"tokensIn":234,"tokensOut":37},"model":"qwen/qwen3.8-27b","provider":"groq","latencyMs":987,"cache":false,"fallback":false}

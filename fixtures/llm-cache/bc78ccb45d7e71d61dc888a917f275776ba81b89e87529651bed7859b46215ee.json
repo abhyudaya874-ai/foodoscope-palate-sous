@@ -1,0 +1,1 @@
+{"text":"{\"thought\": \"Click the PRICING link to find pricing details.\", \"action\": {\"click\": \"e4\"}}","usage":{"tokensIn":984,"tokensOut":26},"model":"qwen/qwen3.8-27b","provider":"groq","latencyMs":850,"cache":false,"fallback":false}

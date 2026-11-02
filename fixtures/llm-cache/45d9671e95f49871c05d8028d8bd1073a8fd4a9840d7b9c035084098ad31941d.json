@@ -1,0 +1,1 @@
+{"text":"{\"thought\":\"Extract FlavorDB and RecipeDB counts from page text.\",\"action\":{\"extract\":{\"key\":\"flavordb_count\",\"ref\":\"Flavour Profiles of 1000+ natural Ingredients\"}}}","usage":{"tokensIn":886,"tokensOut":42},"model":"qwen/qwen3.8-27b","provider":"groq","latencyMs":781,"cache":false,"fallback":false}

@@ -1,0 +1,1 @@
+{"text":"{\"thought\":\"FlavorDB: 1000+ natural ingredients; RecipeDB: 118,000+ recipes.\",\"action\":{\"done\":true,\"result\":\"FlavorDB: 1000+ natural ingredients; RecipeDB: 118,000+ recipes\",\"evidenceKeys\":[\"flavordb_count\"]}}","usage":{"tokensIn":920,"tokensOut":77},"model":"qwen/qwen3.8-27b","provider":"groq","latencyMs":487,"cache":false,"fallback":false}

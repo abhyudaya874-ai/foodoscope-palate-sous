@@ -1,0 +1,1 @@
+{"text":"{\"thought\":\"Click the API link to navigate to the page with ingredient information\",\"action\":{\"click\":{\"ref\":\"e1\"}}}","usage":{"tokensIn":155,"tokensOut":112},"model":"openai/gpt-oss-120b","provider":"groq","latencyMs":913,"cache":false,"fallback":false}

@@ -1,0 +1,1 @@
+{"text":"{\"thought\":\"FlavorDB count is 1000+, RecipeDB is 118,000+. Extract both.\",\"action\":{\"extract\":{\"key\":\"flavordb_count\",\"ref\":\"e1\"}}}","usage":{"tokensIn":930,"tokensOut":48},"model":"qwen/qwen3.8-27b","provider":"groq","latencyMs":583,"cache":false,"fallback":false}

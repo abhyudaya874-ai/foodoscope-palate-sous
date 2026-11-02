@@ -1,0 +1,1 @@
+{"text":"{\"thought\":\"Docs URL 404s. Try the main site to find docs link.\",\"action\":{\"action\":\"goto\",\"url\":\"https://www.foodoscope.com/\"}}","usage":{"tokensIn":260,"tokensOut":37},"model":"qwen/qwen3.8-27b","provider":"groq","latencyMs":301,"cache":false,"fallback":false}

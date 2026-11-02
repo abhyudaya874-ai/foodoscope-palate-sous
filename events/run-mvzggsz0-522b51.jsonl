@@ -1,0 +1,2 @@
+{"id":"ev-mvzggw3h-e726657e","ts":"2026-11-02T16:10:40.637Z","runId":"run-mvzggsz0-522b51","actor":"system","type":"run.start","payload":{"goal":"Find the FlavorDB ingredient count and the API rate-limit text in this API documentation","replay":false}}
+{"id":"ev-mvzggwrt-0e501766","ts":"2026-11-02T16:10:41.513Z","runId":"run-mvzggsz0-522b51","actor":"system","type":"run.end","payload":{"summary":"browser failed","done":["steps:1"],"remaining":[]}}

@@ -1,0 +1,2 @@
+{"id":"ev-mvzgf0ss-2a76ea77","ts":"2026-11-02T16:09:13.420Z","runId":"run-mvzgeyct-f9e0ca","actor":"system","type":"run.start","payload":{"goal":"Find the ingredient count and the API rate-limit text on the Foodoscope docs","replay":false}}
+{"id":"ev-mvzgf0tf-b24843e3","ts":"2026-11-02T16:09:13.443Z","runId":"run-mvzgeyct-f9e0ca","actor":"system","type":"run.end","payload":{"summary":"browser failed","done":["steps:2"],"remaining":[]}}

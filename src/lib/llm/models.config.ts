@@ -32,7 +32,7 @@ export const ROLE_ROUTES: Record<Role, { provider: ProviderId; prefer?: RegExp[]
     { provider: "groq", prefer: [/70b|instruct/i] },
   ],
   browser: [
-    { provider: "groq", prefer: [/8b|instant|small|json/i] },
+    { provider: "groq", prefer: [/qwen3\.8-27b/i] },
     { provider: "openrouter", prefer: [/mini|small|flash|haiku/i] },
     { provider: "nvidia", prefer: [/8b|small/i] },
   ],

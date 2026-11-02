@@ -1,0 +1,1 @@
+{"text":"{\"ingredientCount\":0}","usage":{"tokensIn":100,"tokensOut":195},"model":"openai/gpt-oss-120b","provider":"groq","latencyMs":1399,"cache":false,"fallback":false}

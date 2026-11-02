@@ -1,0 +1,1 @@
+{"text":"{\"thought\":\"The docs URL returned a 404. I need to find the correct documentation page for Foodoscope. Let me try the main site first.\",\"action\":{\"name\":\"goto\",\"url\":\"https://www.foodoscope.com\"}}","usage":{"tokensIn":270,"tokensOut":49},"model":"qwen/qwen3.8-27b","provider":"groq","latencyMs":324,"cache":false,"fallback":false}

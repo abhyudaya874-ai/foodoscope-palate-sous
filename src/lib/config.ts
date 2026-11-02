@@ -28,6 +28,8 @@ export function env(name: string): string | undefined {
   return process.env[name] || loaded.get(name);
 }
 
+init_(); // importing this module populates process.env from the env files
+
 export const config = {
   keys: {
     get tavily() { return env("TAVILY_API_KEY"); },

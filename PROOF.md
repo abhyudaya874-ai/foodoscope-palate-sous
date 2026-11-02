@@ -1,6 +1,6 @@
 # PROOF — Palate + Sous
 
-Generated: 2026-11-02T15:25:33.781Z from 33 events in events/*.jsonl
+Generated: 2026-11-02T16:15:29.522Z from 136 events in events/*.jsonl
 
 ## Probe coverage
 - endpoints probed: 6 (source: probe.call events)
