@@ -19,7 +19,7 @@ const btn = page.getByRole("button", { name: /watch a replay|run replay|replay d
 if (await btn.count()) {
   await btn.click();
   const marks: [string, number][] = [["02-thinking", 3500], ["03-tools", 9000], ["04-tests", 12000], ["05-browser", 14000], ["06-browser-click", 5000], ["07-finished", 9000]];
-  for (const [name, wait] of marks) { await page.waitForTimeout(wait); await page.screenshot({ path: `${out}/${name}.png` }); }
+  for (const [name, wait] of marks) { await page.waitForTimeout(wait); await page.getByRole("button", { name: "Approve", exact: true }).click({ timeout: 1500 }).catch(() => {}); await page.screenshot({ path: `${out}/${name}.png` }); }
   const src = page.getByText(/\d+ sources/).first();
   if (await src.count()) { await src.click(); await page.waitForTimeout(600); await page.screenshot({ path: `${out}/08-sources.png` }); }
 }

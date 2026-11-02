@@ -31,7 +31,7 @@ const MODES: ComposerMode[] = [
 const DEFAULT_GOAL = "Probe the Foodoscope API, detect contract issues and ship verified fixes";
 
 export default function Home() {
-  const { messages, running, play, stop } = useRunStream();
+  const { messages, running, play, stop, awaiting, decisions, decide, autoApprove, setAutoApprove } = useRunStream();
   const { thinking, think } = useThinking();
   const [pinned, setPinned] = useState<Tab | null>(null);
   const [effort, setEffort] = useState<"low" | "medium" | "high">("low");
@@ -63,7 +63,7 @@ export default function Home() {
   const planSteps = planStepsFrom(items);
   const probeSources = sourcesFrom(items);
   const sources = [...probeSources, ...webSources.map((r) => ({ ...r, n: probeSources.length + r.n }))];
-  const changes = changesFrom(items);
+  const changes = changesFrom(items).filter((c) => decisions[c.path] !== "denied");
   const testRuns = testRunsFrom(items);
   const provider = lastProvider(items);
   const shownProvider = thinking.provider ?? provider.provider ?? providerInfo.available;
@@ -103,7 +103,7 @@ export default function Home() {
               <Chat streaming={busy}>
                 <Thread goal={goal} thinking={thinking} items={items} planSteps={planSteps} running={running} finished={replayDone}
                   durationMs={durationMs} answer={answer} sources={sources} webCount={webSources.length} changes={changes} openSrc={openSrc} onOpenSrc={(n) => setOpenSrc(n)}
-                  onRelated={(s) => setPinned(s.includes("crosswalk") || s.includes("report") ? "Changes" : "Tests")} browser={browser} />
+                  onRelated={(s) => setPinned(s.includes("crosswalk") || s.includes("report") ? "Changes" : "Tests")} browser={browser} awaiting={awaiting} decisions={decisions} onDecide={decide} autoApprove={autoApprove} onAuto={setAutoApprove} />
               </Chat>
               <footer className="border-t border-line-1 p-3">
                 <div className="mx-auto max-w-3xl">

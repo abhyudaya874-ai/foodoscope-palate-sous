@@ -40,3 +40,8 @@ Notes: replay auto-approvals are labelled ("Auto-approved in replay"). No LLM te
 - Devin: Command card (`$ GET … → 200` lines), inline diff cards in the thread (`+21 −0`, "re-verified · no change"), test results card, subagent card, live right pane with auto-follow.
 - Motion: staggered slide-in rows, word fade/de-blur answer, pop-in citation chips, hover-scale chips, focus-glow composer, tab underline transition, sources popover scale/fade, reduced-motion respected.
 - Evidence: docs/ui/after/01-idle.png, 07-finished.png, 08-sources.png.
+
+## Round 4 — real human approval gate
+- Replay no longer auto-approves: the stream is held behind a gate (`useRunStream`) at every `confirm.request`; Sous stays paused until Approve / Deny. "Auto-approve rest of replay" is an explicit, visible checkbox.
+- Pending = warning action card (path chip, "Sous is paused. Nothing is written until you decide."); decided = slim receipt row ("Approved by you · receipt logged" / "Denied · nothing written" / "Auto-approved (replay)"). Denied paths are removed from the Changes tab.
+- Evidence: docs/ui/after/11-approval-pending.png, 12-approved-resumed.png, 13-after-both.png.

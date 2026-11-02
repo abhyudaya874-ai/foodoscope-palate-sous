@@ -67,21 +67,31 @@ export function StackTrace({ error, hint }: { error: string; hint?: string }) {
   );
 }
 
-/** Confirmation: human approve/deny gate for sponsor-facing writes. */
-export function Confirmation({ summary, state, onApprove, onDeny }: {
-  summary: string; state: "pending" | "approved" | "denied"; onApprove?: () => void; onDeny?: () => void;
+/** Confirmation: real human gate. Pending = action card; decided = slim receipt row. */
+export function Confirmation({ path, state, onApprove, onDeny, auto, onAuto }: {
+  path: string; state: "pending" | "approved" | "denied" | "auto"; onApprove?: () => void; onDeny?: () => void; auto?: boolean; onAuto?: (v: boolean) => void;
 }) {
+  if (state !== "pending") {
+    const denied = state === "denied";
+    return (
+      <div className="slide-in flex items-center gap-2 rounded-lg border border-line-1 bg-bg-1 px-3 py-1.5 text-[12px]">
+        {denied ? <XIcon className="size-3.5 text-danger" /> : <CheckIcon className="size-3.5 text-accent" />}
+        <span className="text-text-2">{denied ? "Denied" : state === "auto" ? "Auto-approved (replay)" : "Approved by you"}</span>
+        <span className="min-w-0 flex-1 truncate font-mono text-[11px] text-text-1">{path}</span>
+        <span className="text-[10px] text-text-3">{denied ? "nothing written" : "receipt logged"}</span>
+      </div>
+    );
+  }
   return (
-    <div className="rounded-md border border-warn/40 bg-warn-dim p-2.5 text-[12px]">
-      <div className="text-text-1">{summary}</div>
-      {state === "pending" ? (
-        <div className="flex gap-2 pt-2">
-          <button onClick={onApprove} className="rounded-md bg-accent px-2.5 py-1 text-[11px] font-medium text-bg-0 hover:brightness-110">Approve</button>
-          <button onClick={onDeny} className="rounded-md border border-line-1 px-2.5 py-1 text-[11px] text-text-2 hover:text-text-1">Deny</button>
-        </div>
-      ) : (
-        <div className="pt-1 text-[11px] text-text-3">{state === "approved" ? "Auto-approved in replay — applied with receipt." : "Denied — nothing was written."}</div>
-      )}
+    <div role="alertdialog" aria-label="approval needed" className="settle rounded-lg border border-warn/50 bg-bg-1 p-3 ring-4 ring-warn-dim">
+      <div className="flex items-center gap-2 text-[12px] text-warn"><span className="live-pulse size-1.5 rounded-full bg-warn" aria-hidden />Approval needed — sponsor-facing write</div>
+      <div className="mt-1.5 rounded-md border border-line-1 bg-bg-0 px-2.5 py-1.5 font-mono text-[12px] text-text-1">{path}</div>
+      <p className="pt-1.5 text-[12px] text-text-3">Sous is paused. Nothing is written until you decide.</p>
+      <div className="flex items-center gap-2 pt-2.5">
+        <button onClick={onApprove} className="rounded-md bg-accent px-3 py-1.5 text-[12px] font-medium text-bg-0 transition-transform hover:scale-[1.03]">Approve</button>
+        <button onClick={onDeny} className="rounded-md border border-line-1 px-3 py-1.5 text-[12px] text-text-2 hover:border-danger/60 hover:text-danger">Deny</button>
+        <label className="ml-auto flex cursor-pointer items-center gap-1.5 text-[11px] text-text-3"><input type="checkbox" checked={!!auto} onChange={(e) => onAuto?.(e.target.checked)} className="accent-[var(--accent)]" />Auto-approve rest of replay</label>
+      </div>
     </div>
   );
 }

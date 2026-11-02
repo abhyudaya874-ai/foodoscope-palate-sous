@@ -38,10 +38,11 @@ function StreamedAnswer({ text, rows, onOpen }: { text: string; rows: SourceRow[
   );
 }
 
-export function Thread({ goal, thinking, items, planSteps, running, finished, durationMs, answer, sources, webCount, changes, openSrc, onOpenSrc, onRelated, browser }: {
+export function Thread({ goal, thinking, items, planSteps, running, finished, durationMs, answer, sources, webCount, changes, openSrc, onOpenSrc, onRelated, browser, awaiting, decisions, onDecide, autoApprove, onAuto }: {
   goal: string; thinking: Thinking; items: ViewItem[]; planSteps: PlanStep[]; running: boolean; finished: boolean; durationMs?: number;
   answer: string; sources: SourceRow[]; webCount: number; changes: Change[]; openSrc: number | null; onOpenSrc: (n: number) => void; onRelated: (s: string) => void;
   browser: { i: number; total: number; thought: string; done: boolean } | null;
+  awaiting: string | null; decisions: Record<string, "approved" | "denied" | "auto">; onDecide: (ok: boolean) => void; autoApprove: boolean; onAuto: (v: boolean) => void;
 }) {
   const [view, setView] = React.useState<"answer" | "links">("answer");
   const narration = items.filter((i) => i.kind === "reasoning").map((i) => i.detail).join("\n");
@@ -99,7 +100,7 @@ export function Thread({ goal, thinking, items, planSteps, running, finished, du
               )}
               {rows.map((i, idx) => (
                 <div key={i.seq} style={{ animationDelay: `${idx * 40}ms` }} className="slide-in">
-                  <StepRow label={prettyTitle(i.title)} badge={i.badge} latencyMs={i.latencyMs} tokens={i.tokens} ok={i.ok}><span className="font-mono text-[10px]">{i.detail}</span></StepRow>
+                  <StepRow label={prettyTitle(i.title)} badge={i.badge} latencyMs={i.latencyMs} tokens={i.tokens} ok={i.kind === "patch" ? undefined : i.ok}><span className="font-mono text-[10px]">{i.detail}</span></StepRow>
                 </div>
               ))}
             </div>
@@ -112,7 +113,11 @@ export function Thread({ goal, thinking, items, planSteps, running, finished, du
           ))}
           {tests.map((t) => <div key={t.suite} className="settle"><TestRunCard {...t} /></div>)}
           {items.filter((i) => i.kind === "error").map((i) => <StackTrace key={i.seq} error={i.detail ?? "error"} hint="Open the Terminal tab for the failing call." />)}
-          {items.filter((i) => i.kind === "confirm").map((i) => <Confirmation key={i.seq} summary={`Write ${i.detail ?? "file"}`} state={running ? "pending" : "approved"} />)}
+          {items.filter((i) => i.kind === "confirm").map((i) => {
+            const p = i.detail ?? "";
+            const st = awaiting === p ? "pending" : decisions[p] ?? "approved";
+            return <Confirmation key={i.seq} path={p} state={st} auto={autoApprove} onAuto={onAuto} onApprove={() => onDecide(true)} onDeny={() => onDecide(false)} />;
+          })}
           {finished && (
             <Message from="assistant">
               <div className="settle flex flex-col gap-4">
