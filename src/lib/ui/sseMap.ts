@@ -1,7 +1,7 @@
 import type { AppEvent } from "../events/types";
 
 export type SseType =
-  | "plan" | "reasoning.delta" | "text.delta" | "tool.start" | "tool.end"
+  | "plan" | "reasoning.delta" | "text.delta" | "tool.start" | "tool.end" | "tool.error"
   | "file.patch" | "csv.upsert" | "test.result" | "budget" | "xp"
   | "confirm.request" | "checkpoint" | "checkpoint.restore" | "probe" | "done";
 
