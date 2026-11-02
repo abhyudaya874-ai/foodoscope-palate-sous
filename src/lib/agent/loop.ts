@@ -173,9 +173,10 @@ export async function runSous(opts: {
   }
   done.push("verify");
 
-  // ---- SHIP: mail-ready bug report ----
-  if (confirmed.length) {
-    const c = confirmed[0];
+  // ---- SHIP: mail-ready bug report (first patched bug; the curls below are its repro) ----
+  const patchedForReport = confirmed.filter((f) => ["H2", "B2"].includes(f.id));
+  if (patchedForReport.length) {
+    const c = patchedForReport[0];
     const report = `# ${c.title}
 
 ## Environment

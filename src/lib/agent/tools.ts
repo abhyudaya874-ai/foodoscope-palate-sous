@@ -97,14 +97,16 @@ export const tools = {
           cwd: process.cwd(), env: { ...process.env, ...(args.env ?? {}) }, timeout: 120_000,
         });
         const { passed, failed } = parseVitest(stdout);
-        ctx.bus.emit("test.run", "system", { suite: args.suite, passed, failed, phase: "standalone" });
-        ctx.chan.push("test.result", { suite: args.suite, passed, failed });
+        const phase = args.env?.SOUS_SHIM === "1" ? "after" : args.env?.SOUS_SHIM === "0" ? "before" : "standalone";
+        ctx.bus.emit("test.run", "system", { suite: args.suite, passed, failed, phase });
+        ctx.chan.push("test.result", { suite: args.suite, passed, failed, phase });
         return { passed, failed, ok: failed === 0 };
       } catch (e) {
         const stdout = (e as { stdout?: string }).stdout ?? "";
         const { passed, failed } = parseVitest(stdout);
-        ctx.bus.emit("test.run", "system", { suite: args.suite, passed, failed, phase: "standalone" });
-        ctx.chan.push("test.result", { suite: args.suite, passed, failed });
+        const phase = args.env?.SOUS_SHIM === "1" ? "after" : args.env?.SOUS_SHIM === "0" ? "before" : "standalone";
+        ctx.bus.emit("test.run", "system", { suite: args.suite, passed, failed, phase });
+        ctx.chan.push("test.result", { suite: args.suite, passed, failed, phase });
         return { passed, failed, ok: false };
       }
     });
@@ -130,10 +132,14 @@ export const tools = {
   },
 };
 
-function parseVitest(out: string): { passed: number; failed: number } {
-  const m = out.match(/Tests\s+(\d+)\s*passed?|(\d+)\s+passed.*?(\d+)\s+failed/i);
+const ANSI_RE = /[\u001b\u009b][[\]()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g;
+function parseVitest(raw: string): { passed: number; failed: number } {
+  const out = raw.replace(ANSI_RE, "");
+  const passFirst = out.match(/Tests\s+(\d+)\s+passed(?:\s*\|\s*(\d+)\s+failed)?/i);
+  if (passFirst) return { passed: Number(passFirst[1]), failed: Number(passFirst[2] ?? 0) };
+  const failFirst = out.match(/Tests\s+(\d+)\s+failed(?:\s*\|\s*(\d+)\s+passed)?/i);
+  if (failFirst) return { failed: Number(failFirst[1]), passed: Number(failFirst[2] ?? 0) };
   const p = out.match(/(\d+)\s+passed/i);
   const f = out.match(/(\d+)\s+failed/i);
-  void m;
   return { passed: p ? Number(p[1]) : 0, failed: f ? Number(f[1]) : 0 };
 }

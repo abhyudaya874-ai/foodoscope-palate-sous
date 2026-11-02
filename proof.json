@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-11-02T15:24:05.070Z",
+  "eventCount": 33,
+  "endpointsProbed": 6,
+  "liveCalls": 3,
+  "llm": {
+    "total": 0,
+    "byProvider": {},
+    "cacheHits": 0,
+    "cacheRate": "[measure]",
+    "cacheSaved": 0
+  },
+  "bugs": [
+    "CONFIRMED",
+    "CONFIRMED",
+    "CONFIRMED"
+  ],
+  "verifiedFixes": [
+    "H2",
+    "B2"
+  ],
+  "crosswalk": {
+    "before": 9,
+    "after": 13,
+    "n": 30
+  }
+}

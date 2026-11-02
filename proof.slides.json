@@ -1,0 +1,58 @@
+[
+  {
+    "headline": "Crosswalk matched 9 -> 13 of 30",
+    "chart": "bar",
+    "data": [
+      {
+        "label": "before",
+        "v": 9
+      },
+      {
+        "label": "after",
+        "v": 13
+      }
+    ],
+    "source": "workspace/data/crosswalk.csv",
+    "as_of": "2026-11-02T15:24:05.070Z"
+  },
+  {
+    "headline": "Probe -> confirm -> fix -> verify funnel",
+    "chart": "funnel",
+    "data": [
+      {
+        "label": "probed",
+        "v": 6
+      },
+      {
+        "label": "confirmed",
+        "v": 3
+      },
+      {
+        "label": "fixed",
+        "v": 2
+      },
+      {
+        "label": "verified",
+        "v": 2
+      }
+    ],
+    "source": "events/*.jsonl",
+    "as_of": "2026-11-02T15:24:05.070Z"
+  },
+  {
+    "headline": "LLM cache hit rate [measure]",
+    "chart": "stat",
+    "data": [
+      {
+        "label": "hits",
+        "v": 0
+      },
+      {
+        "label": "saved tokens",
+        "v": 0
+      }
+    ],
+    "source": "llm.call.cache",
+    "as_of": "2026-11-02T15:24:05.070Z"
+  }
+]

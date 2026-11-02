@@ -1,4 +1,4 @@
-# Entity response lacks molecule array — no direct entity→molecule join
+# by-natural-source rejects documented param 'naturalSource'; actual param is 'natural_source_name'
 
 ## Environment
 - api.foodoscope.com over HTTPS, Bearer auth. Probed 2026-11-02.
@@ -15,6 +15,7 @@ curl -H "Authorization: Bearer $KEY" "https://api.foodoscope.com/flavordb/entiti
 Expected: documented param works. Actual: 400 "Parameter 'natural_source_name' cannot be empty" on documented name; 200 on snake_case.
 
 ## Evidence
+- `fixtures/api/flavordb.entities.by.natural.source.923b967f.json`
 - `fixtures/api/flavordb.entities.by.natural.source.69fd2dc2.json`
 
 Severity: low-medium (docs/SDK drift; blocks users following the Postman collection). Suggestion, not asserted.
