@@ -1,58 +1,52 @@
-// GET /api/sources — real evidence rows for the Sources popover: search-cache (Tavily/Exa),
-// rivals.csv / claims.csv / ui_facts.csv (browser + search rows). No secrets; links are real.
-import { readdirSync, readFileSync, existsSync } from "node:fs";
+// GET /api/sources — real evidence rows cited in workspace/data CSVs (rivals, claims, ui_facts).
+// Every row: real url + evidence_id + provider. No stale cache sweep, no secrets.
+import { readFileSync, existsSync } from "node:fs";
 import path from "node:path";
 
 export const runtime = "nodejs";
 
-interface Row {
-  n: number; title: string; url: string; detail?: string;
-  provider: string; confidence?: string; evidence_id?: string; kind: string;
+interface Row { n: number; title: string; url: string; detail?: string; provider: string; confidence?: string; evidence_id?: string; kind: string }
+
+/** RFC-4180-ish CSV parse: quoted fields may contain commas and newlines. */
+function parseCsv(text: string): string[][] {
+  const rows: string[][] = [];
+  let row: string[] = [], field = "", inQ = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (inQ) {
+      if (ch === '"') { if (text[i + 1] === '"') { field += '"'; i++; } else inQ = false; }
+      else field += ch;
+    } else if (ch === '"') inQ = true;
+    else if (ch === ",") { row.push(field); field = ""; }
+    else if (ch === "\n") { row.push(field); field = ""; if (row.some((c) => c.trim())) rows.push(row); row = []; }
+    else if (ch !== "\r") field += ch;
+  }
+  if (field || row.length) { row.push(field); if (row.some((c) => c.trim())) rows.push(row); }
+  return rows;
 }
 
-function parseCsv(p: string): string[][] {
-  if (!existsSync(p)) return [];
-  return readFileSync(p, "utf8").split("\n").filter((l) => l.trim()).map((l) => l.split(","));
+function csvRows(p: string): { head: string[]; body: string[][] } {
+  if (!existsSync(p)) return { head: [], body: [] };
+  const [head = [], ...body] = parseCsv(readFileSync(p, "utf8"));
+  return { head, body };
 }
 
 export async function GET() {
   const rows: Row[] = [];
-  // 1) search-cache: every cached Tavily/Exa response, real urls + snippets
-  const dir = path.join(process.cwd(), "fixtures", "search-cache");
-  if (existsSync(dir)) {
-    for (const f of readdirSync(dir)) {
-      try {
-        const j = JSON.parse(readFileSync(path.join(dir, f), "utf8")) as {
-          evidence?: { id: string; url: string; title: string; snippet: string; provider: string; publishedAt?: string }[];
-        };
-        for (const e of j.evidence ?? []) {
-          rows.push({
-            n: 0, title: e.title.slice(0, 120), url: e.url,
-            detail: e.snippet.slice(0, 140), provider: e.provider,
-            evidence_id: e.id, kind: "web-search",
-          });
-        }
-      } catch { /* skip malformed cache file */ }
+  const base = path.join(process.cwd(), "workspace", "data");
+  const push = (file: string, kind: string, provider: string, titleKey: string, detailFn: (g: (k: string) => string) => string) => {
+    const { head, body } = csvRows(path.join(base, file));
+    for (const r of body) {
+      const g = (k: string) => (head.includes(k) ? r[head.indexOf(k)] ?? "" : "");
+      const url = g("source_url");
+      if (!url || url === "NA" || !url.startsWith("http")) continue;
+      rows.push({ n: 0, title: g(titleKey).slice(0, 120) || url, url, detail: detailFn(g).slice(0, 140), provider: g("provider") || provider, confidence: g("confidence"), evidence_id: g("evidence_id"), kind });
     }
-  }
-  // 2) claims.csv — deck claims with verdicts
-  const claims = parseCsv(path.join(process.cwd(), "workspace", "data", "claims.csv"));
-  const [ch, ...cbody] = claims;
-  for (const r of cbody) {
-    const get = (k: string) => (ch && ch.includes(k) ? r[ch.indexOf(k)] ?? "" : "");
-    if (get("source_url") && get("source_url") !== "NA")
-      rows.push({ n: 0, title: get("claim").slice(0, 120), url: get("source_url"), detail: `verdict: ${get("verdict")} · agreement: ${get("agreement")}`, provider: "verify", confidence: get("confidence"), evidence_id: get("evidence_id"), kind: "claim-check" });
-  }
-  // 3) ui_facts.csv — browser-extracted page facts
-  const facts = parseCsv(path.join(process.cwd(), "workspace", "data", "ui_facts.csv"));
-  const [fh, ...fbody] = facts;
-  for (const r of fbody) {
-    const get = (k: string) => (fh && fh.includes(k) ? r[fh.indexOf(k)] ?? "" : "");
-    if (get("source_url"))
-      rows.push({ n: 0, title: get("fact"), url: get("source_url"), detail: get("value").slice(0, 140), provider: "browser", confidence: "L", kind: "browser-fact" });
-  }
-  // dedupe by url, number them
+  };
+  push("claims.csv", "claim-check", "verify", "claim", (g) => `verdict: ${g("verdict")} · agreement: ${g("agreement")}`);
+  push("ui_facts.csv", "browser-fact", "browser", "fact", (g) => g("value"));
+  push("rivals.csv", "rival-watch", "tavily", "claim", (g) => g("claim"));
   const seen = new Set<string>();
-  const out = rows.filter((r) => r.url && !seen.has(r.url) && seen.add(r.url)).map((r, i) => ({ ...r, n: i + 1 }));
+  const out = rows.filter((r) => !seen.has(r.url) && seen.add(r.url)).map((r, i) => ({ ...r, n: i + 1 }));
   return Response.json({ rows: out, asOf: new Date().toISOString() });
 }

@@ -45,3 +45,7 @@ Notes: replay auto-approvals are labelled ("Auto-approved in replay"). No LLM te
 - Replay no longer auto-approves: the stream is held behind a gate (`useRunStream`) at every `confirm.request`; Sous stays paused until Approve / Deny. "Auto-approve rest of replay" is an explicit, visible checkbox.
 - Pending = warning action card (path chip, "Sous is paused. Nothing is written until you decide."); decided = slim receipt row ("Approved by you · receipt logged" / "Denied · nothing written" / "Auto-approved (replay)"). Denied paths are removed from the Changes tab.
 - Evidence: docs/ui/after/11-approval-pending.png, 12-approved-resumed.png, 13-after-both.png.
+
+## Round 5 — Perplexity palette + Links fix
+- Tokens moved to Perplexity's dark theme: cool near-black surfaces (#191a1a/#202222/#262828), off-white text, teal accent #20b8cd (amber #f1a33c / red #eb7075 status). All components pick it up via tokens.
+- Links bug fixed: /api/sources no longer sweeps the whole search cache (45 stale rows incl. old test queries); it now returns only rows cited in workspace/data CSVs (claims, ui_facts, rivals) with an RFC-4180 CSV parser (quoted multi-line fields). 12 real cited rows; answer + chip updated automatically.

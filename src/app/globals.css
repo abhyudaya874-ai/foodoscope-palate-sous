@@ -3,13 +3,13 @@
 /* ── Design tokens (single source; components use these only) ─────────── */
 :root {
   /* warm near-black neutral ramp */
-  --bg-0: #0c0d0c; --bg-1: #141614; --bg-2: #1b1e1b;
-  --line-1: #262a26; --line-2: #32372f;
-  --text-1: #e8eae6; --text-2: #9ba39a; --text-3: #6b736b;
-  /* one accent + status */
-  --accent: #34d399; --accent-dim: rgba(52, 211, 153, 0.12);
-  --warn: #fbbf24; --warn-dim: rgba(251, 191, 36, 0.12);
-  --danger: #f87171; --danger-dim: rgba(248, 113, 113, 0.12);
+  --bg-0: #191a1a; --bg-1: #202222; --bg-2: #262828;
+  --line-1: #2b2e2e; --line-2: #3a3e3e;
+  --text-1: #f2f4f3; --text-2: #9aa19e; --text-3: #676d6c;
+  /* one accent + status (Perplexity teal) */
+  --accent: #20b8cd; --accent-dim: rgba(32, 184, 205, 0.12);
+  --warn: #f1a33c; --warn-dim: rgba(241, 163, 60, 0.12);
+  --danger: #eb7075; --danger-dim: rgba(235, 112, 117, 0.12);
   /* radii */
   --r-sm: 6px; --r-md: 10px; --r-lg: 16px;
   /* elevation = border + inner highlight, not shadow */

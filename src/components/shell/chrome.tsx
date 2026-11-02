@@ -80,7 +80,7 @@ export function RailCard({ profile, queueLeft, queueDone }: {
   return (
     <div className="flex flex-col gap-3 p-3">
       <div className="overflow-hidden rounded-lg border border-line-1 bg-bg-1" style={{ boxShadow: "var(--raise)" }}>
-        <div className="h-14 bg-gradient-to-r from-emerald-900/60 via-bg-2 to-teal-900/40" aria-hidden />
+        <div className="h-14 bg-gradient-to-r from-cyan-950/80 via-bg-1 to-teal-900/50" aria-hidden />
         <div className="-mt-6 flex flex-col gap-2 p-3">
           <div className="grid size-10 place-items-center rounded-full border-2 border-accent bg-bg-2 text-[15px] font-semibold text-accent" aria-hidden>S</div>
           <div className="flex flex-col gap-1">
