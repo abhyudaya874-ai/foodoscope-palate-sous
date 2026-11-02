@@ -5,6 +5,7 @@
 import * as React from "react";
 import { ExternalLinkIcon } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { cn } from "@/lib/utils";
 
 export interface SourceRow {
@@ -98,11 +99,24 @@ export function Confidence({ c }: { c: string }) {
   return <span className={cn("font-mono text-[10px]", tone)} title="confidence">{c}</span>;
 }
 
-export function InlineCitation({ n, onOpen }: { n: number; onOpen?: (n: number) => void }) {
+export function InlineCitation({ n, row, onOpen, delay = 0 }: { n: number; row?: SourceRow; onOpen?: (n: number) => void; delay?: number }) {
   return (
-    <button type="button" onClick={() => onOpen?.(n)} aria-label={`open source ${n}`}
-      className="mx-0.5 inline-grid size-[18px] -translate-y-px place-items-center rounded-full border border-line-1 bg-bg-2 align-middle font-mono text-[9px] text-text-2 hover:border-accent hover:text-accent">
-      {n}
-    </button>
+    <HoverCard>
+      <HoverCardTrigger delay={120} closeDelay={80}
+        render={<button type="button" onClick={() => onOpen?.(n)} aria-label={`open source ${n}`} style={{ animationDelay: `${delay}ms` }}
+          className="pop-in mx-0.5 relative -top-[3px] inline-grid size-[18px] place-items-center rounded-full border border-line-1 bg-bg-2 align-baseline font-mono text-[9px] text-text-2 transition-all duration-150 hover:scale-110 hover:border-accent hover:text-accent" />}>
+        {n}
+      </HoverCardTrigger>
+      <HoverCardContent side="top" className="w-72 rounded-lg border border-line-1 bg-bg-1 p-3 text-[12px] shadow-none">
+        {row ? (
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-1.5"><span className={cn("rounded border px-1 py-px font-mono text-[9px] uppercase", TONE[row.provider ?? "api"] ?? TONE.api)}>{row.provider ?? "api"}</span><span className="truncate text-[10px] text-text-3">{host(row.url) || "recorded fixture"}</span>{row.confidence && <Confidence c={row.confidence} />}</div>
+            <div className="line-clamp-2 text-text-1">{row.title}</div>
+            {row.detail && <div className="line-clamp-3 text-[11px] text-text-3">{row.detail}</div>}
+            <div className="pt-0.5 text-[10px] text-text-3">click to open in sources</div>
+          </div>
+        ) : <span className="text-text-3">Source {n}</span>}
+      </HoverCardContent>
+    </HoverCard>
   );
 }

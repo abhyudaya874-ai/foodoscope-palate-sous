@@ -9,7 +9,10 @@ import { Plan } from "@/components/ai-elements/plan";
 import { Terminal, TestRunCard, EmptyHint } from "@/components/ai-elements/tool";
 import { PromptInput } from "@/components/ai-elements/prompt-input";
 import type { SourceRow } from "@/components/ai-elements/sources";
-import { Hero, TopBar, RailCard } from "@/components/shell/chrome";
+import { Hero, TopBar } from "@/components/shell/chrome";
+import { Sidebar } from "@/components/shell/sidebar";
+import { GlobeIcon, SearchIcon } from "lucide-react";
+import type { ComposerMode } from "@/components/ai-elements/prompt-input";
 import { Thread } from "@/components/shell/thread";
 import { BrowserPane } from "@/components/shell/browser-pane";
 import { DiffCard } from "@/components/shell/diff-card";
@@ -21,6 +24,10 @@ import { cn } from "@/lib/utils";
 
 const TABS = ["Plan", "Changes", "Terminal", "Tests", "Browser"] as const;
 type Tab = (typeof TABS)[number];
+const MODES: ComposerMode[] = [
+  { id: "probe", label: "Probe", icon: <SearchIcon className="size-3.5" /> },
+  { id: "browser", label: "Browser", icon: <GlobeIcon className="size-3.5" /> },
+];
 const DEFAULT_GOAL = "Probe the Foodoscope API, detect contract issues and ship verified fixes";
 
 export default function Home() {
@@ -30,6 +37,8 @@ export default function Home() {
   const [effort, setEffort] = useState<"low" | "medium" | "high">("low");
   const [mode, setMode] = useState<"live" | "replay">("replay");
   const [draft, setDraft] = useState("");
+  const [cmode, setCmode] = useState("probe");
+  const [recents, setRecents] = useState<string[]>([]);
   const [goal, setGoal] = useState("");
   const [runNo, setRunNo] = useState(0);
   const [openSrc, setOpenSrc] = useState<number | null>(null);
@@ -45,7 +54,7 @@ export default function Home() {
 
   const submit = async (text: string) => {
     const g = text.trim() || DEFAULT_GOAL;
-    setGoal(g); setDraft(""); setPinned(null); setBrowser(null); setRunNo((n) => n + 1);
+    setGoal(g); setDraft(""); setRecents((r) => [g, ...r.filter((x) => x !== g)].slice(0, 6)); setPinned(null); setBrowser(null); setRunNo((n) => n + 1);
     await think(g);          // real model thinking streams first (free provider)
     play(1);                 // then the recorded tool run, paced
   };
@@ -84,29 +93,21 @@ export default function Home() {
         effort={effort} onEffort={setEffort} mode={mode} onMode={setMode}
         toolsUsed={toolsUsed} toolsCap={40} onRun={() => submit(goal || DEFAULT_GOAL)} running={busy} />
       <div className="flex min-h-0 flex-1">
-        <aside className="hidden w-60 shrink-0 border-r border-line-1 bg-bg-0 md:block" aria-label="Sous profile">
-          <RailCard profile={sous} queueLeft={planSteps.filter((s) => s.status === "pending").length} queueDone={planSteps.filter((s) => s.status === "done").length} />
-        </aside>
-        <div className="flex items-center gap-2 border-b border-line-1 px-3 py-1.5 md:hidden" aria-label="Sous profile compact">
-          <span className="grid size-6 place-items-center rounded-full border border-accent bg-bg-2 text-[11px] font-semibold text-accent" aria-hidden>S</span>
-          <span className="text-[12px] font-medium">Sous #1</span>
-          <span className="rounded border border-accent/40 bg-accent-dim px-1.5 py-0.5 text-[10px] text-accent">{sous.rank}</span>
-          <span className="tnum ml-auto text-[10px] text-text-2">{sous.xp} XP · {sous.streak}d streak</span>
-        </div>
-
+        <Sidebar profile={sous} recents={recents} queueDone={planSteps.filter((x) => x.status === "done").length} queueLeft={planSteps.filter((x) => x.status === "pending").length}
+          onNew={() => window.location.reload()} onNav={(id) => { if (id === "replay") void submit(DEFAULT_GOAL); else setPinned(id === "browser" ? "Browser" : "Changes"); }} />
         <main className="flex min-w-0 flex-1 flex-col" aria-label="conversation">
           {!hasRun ? (
-            <Hero onGoal={(g) => submit(g)} onReplay={() => submit(DEFAULT_GOAL)} running={busy} />
+            <Hero onGoal={(g) => submit(g)} running={busy} modes={MODES} mode={cmode} onMode={setCmode} modelLabel={shownProvider ? `${shownProvider} · free` : undefined} />
           ) : (
             <>
               <Chat streaming={busy}>
                 <Thread goal={goal} thinking={thinking} items={items} planSteps={planSteps} running={running} finished={replayDone}
-                  durationMs={durationMs} answer={answer} sources={sources} openSrc={openSrc} onOpenSrc={(n) => setOpenSrc(n)}
+                  durationMs={durationMs} answer={answer} sources={sources} webCount={webSources.length} changes={changes} openSrc={openSrc} onOpenSrc={(n) => setOpenSrc(n)}
                   onRelated={(s) => setPinned(s.includes("crosswalk") || s.includes("report") ? "Changes" : "Tests")} browser={browser} />
               </Chat>
               <footer className="border-t border-line-1 p-3">
                 <div className="mx-auto max-w-3xl">
-                  <PromptInput value={draft} onChange={setDraft} onSend={() => submit(draft)} onStop={stop} running={busy} placeholder="Ask a follow-up or give Sous a new goal…" />
+                  <PromptInput value={draft} onChange={setDraft} onSend={() => submit(draft)} onStop={stop} running={busy} placeholder="Ask a follow-up…" modes={MODES} mode={cmode} onMode={setCmode} modelLabel={shownProvider ? `${shownProvider} · free` : undefined} />
                 </div>
               </footer>
             </>

@@ -34,3 +34,9 @@ Before: `docs/ui/before/` · After: `docs/ui/after/` · Spec: `docs/ui/DESIGN_SP
 | Gross layout | Perplexity-style thread: goal title → Steps → test card → answer with inline [n] → sources chip → Related; Devin-style live right pane | after/07-finished.png |
 
 Notes: replay auto-approvals are labelled ("Auto-approved in replay"). No LLM text is fabricated: the live thought is the model's own stream; the plan narration is labelled "Sous narration · replay".
+
+## Round 3 (match Perplexity + Devin references)
+- Perplexity: left nav (logo, New, Replay/Browser/Reports/Sources, Pinned/Projects/Recents, collapsible, profile + XP at the bottom); hero with one large rounded composer (Probe | Browser pills, model label, round send) and quiet arrow-prefixed goal list; thread with Answer / Links tabs, serif answer streamed word-by-word, "Searched the web — N receipts" step with real hosts, hover-card citations (provider chip, host, snippet, confidence), Related list.
+- Devin: Command card (`$ GET … → 200` lines), inline diff cards in the thread (`+21 −0`, "re-verified · no change"), test results card, subagent card, live right pane with auto-follow.
+- Motion: staggered slide-in rows, word fade/de-blur answer, pop-in citation chips, hover-scale chips, focus-glow composer, tab underline transition, sources popover scale/fade, reduced-motion respected.
+- Evidence: docs/ui/after/01-idle.png, 07-finished.png, 08-sources.png.

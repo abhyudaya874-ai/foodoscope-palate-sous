@@ -151,3 +151,15 @@ export function TestRunCard({ suite, before, after, standalone }: {
     </div>
   );
 }
+
+/** Devin-style command card: header with tool names, mono body with $ lines and statuses. */
+export function CommandCard({ title, lines }: { title: string; lines: string[] }) {
+  return (
+    <div className="overflow-hidden rounded-lg border border-line-1 bg-bg-1">
+      <div className="flex items-center gap-2 border-b border-line-1 px-3 py-1.5 text-[12px] text-text-2"><TerminalIcon className="size-3.5 text-text-3" />Command <span className="font-mono text-text-3">{title}</span></div>
+      <div className="flex flex-col gap-0.5 px-3 py-2 font-mono text-[11px] leading-5 text-text-2">
+        {lines.map((l, i) => <div key={i} style={{ animationDelay: `${i * 90}ms` }} className="slide-in whitespace-pre-wrap break-all"><span className="text-accent">$</span> {l}</div>)}
+      </div>
+    </div>
+  );
+}

@@ -1,8 +1,8 @@
 "use client";
 // Shell presentation components: Hero (idle), TopBar, RailCard, RightPane. Tokens only.
 import * as React from "react";
-import { FlameIcon, PlayIcon, SparklesIcon } from "lucide-react";
-import { Suggestion, PromptInput, Context } from "@/components/ai-elements/prompt-input";
+import { ArrowUpRightIcon, FlameIcon, SparklesIcon } from "lucide-react";
+import { PromptInput, Context, type ComposerMode } from "@/components/ai-elements/prompt-input";
 import { ModelSelector, ReasoningLevel, ModeSwitch, type Health } from "@/components/ai-elements/model-selector";
 import { ProfileCard } from "@/components/profile/ProfileCard";
 import { Queue } from "@/components/ai-elements/plan";
@@ -17,9 +17,9 @@ export function LogoMark({ className }: { className?: string }) {
   );
 }
 
-/** Idle hero: logo, headline, composer, 4 real goal chips, replay action. */
-export function Hero({ onGoal, onReplay, running }: {
-  onGoal: (g: string) => void; onReplay: () => void; running: boolean;
+/** Idle hero (Perplexity): logo, headline, one large composer with mode pills, quiet goal chips. */
+export function Hero({ onGoal, running, modes, mode, onMode, modelLabel }: {
+  onGoal: (g: string) => void; running: boolean; modes: ComposerMode[]; mode: string; onMode: (m: string) => void; modelLabel?: string;
 }) {
   const [value, setValue] = React.useState("");
   const chips = [
@@ -29,19 +29,21 @@ export function Hero({ onGoal, onReplay, running }: {
     "Fix the crosswalk for my ingredient CSV",
   ];
   return (
-    <div className="flex min-h-0 flex-1 flex-col items-center justify-center px-4">
-      <div className="settle flex w-full max-w-2xl flex-col items-center gap-5 py-10">
-        <LogoMark />
-        <h1 className="text-center text-[28px] font-semibold tracking-tight text-text-1">What should Sous cook up?</h1>
-        <p className="text-center text-[13px] text-text-2">Give it a goal. Watch it probe, fix and verify — every claim keeps its receipt.</p>
-        <div className="w-full"><PromptInput value={value} onChange={setValue} onSend={() => onGoal(value || chips[0])} running={running} /></div>
-        <div className="settle-2 flex flex-wrap justify-center gap-2">
-          {chips.map((c) => <Suggestion key={c} onClick={() => onGoal(c)}>{c}</Suggestion>)}
+    <div className="flex min-h-0 flex-1 flex-col items-center justify-center px-6">
+      <div className="settle flex w-full max-w-[680px] flex-col items-center gap-6 pb-16">
+        <LogoMark className="size-10" />
+        <h1 className="text-center text-[34px] font-normal tracking-tight text-text-1">What should Sous cook up?</h1>
+        <div className="settle-2 w-full">
+          <PromptInput big value={value} onChange={setValue} onSend={() => onGoal(value)} running={running} placeholder="Give Sous a goal…" modes={modes} mode={mode} onMode={onMode} modelLabel={modelLabel} />
         </div>
-        <button onClick={onReplay} disabled={running}
-          className="settle-3 inline-flex items-center gap-1.5 rounded-md border border-line-1 bg-bg-1 px-3 py-1.5 text-[12px] text-text-2 hover:text-text-1 disabled:opacity-40">
-          <PlayIcon className="size-3.5 text-accent" /> Watch a replay
-        </button>
+        <div className="settle-3 flex w-full flex-col items-start gap-0.5 px-1">
+          {chips.map((c, i) => (
+            <button key={c} onClick={() => onGoal(c)} style={{ animationDelay: `${300 + i * 70}ms` }}
+              className="slide-in group flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-[14px] text-text-2 transition-colors hover:bg-bg-1 hover:text-text-1">
+              <ArrowUpRightIcon className="size-3.5 text-text-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />{c}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -56,7 +58,6 @@ export function TopBar({ provider, model, health, latencyMs, effort, onEffort, m
 }) {
   return (
     <header className="flex items-center gap-3 border-b border-line-1 bg-bg-0 px-4 py-2">
-      <span className="text-[13px] font-semibold text-text-1">Palate <span className="text-accent">+</span> Sous</span>
       <ModelSelector provider={provider} model={model} health={health} latencyMs={latencyMs} />
       <ReasoningLevel value={effort} onChange={onEffort} />
       <ModeSwitch mode={mode} onChange={onMode} />
