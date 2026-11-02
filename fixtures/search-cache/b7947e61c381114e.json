@@ -1,0 +1,50 @@
+{
+  "evidence": [
+    {
+      "id": "b62ba20556",
+      "url": "https://www.just-food.com/news/notco-sells-brazil-assets-in-wake-of-argentina-uruguay-disposals/",
+      "title": "NotCo sells Brazil assets in wake of Argentina, Uruguay disposals - just-food.com",
+      "snippet": "“This marks an important milestone for NotCo AI as the company continues to accelerate its growth as an AI tech company,” the Chilean firm said. NotCo sold its operations in Argentina and Uruguay in June, and has moved to offload its business in Brazil. In a statement provided to *Just Food*, the company said: “NotCo is taking its next step towards a bright future and its two business units with the acquisition of its operation in Brazil by Ferrara, a Brazilian investment group with operations and experience in the food industry. This publication has also sought to clarify the status of NotCo Foods, which housed the branded parts of the business and is likely one of the two units mentioned in the statement, along with the AI operation. Meanwhile, NotCo’s statement on the Brazil divestment continued: “This marks an important milestone for NotCo AI as the company continues to accelerate it",
+      "provider": "tavily",
+      "publishedAt": "Fri, 11 Sep 2026 12:38:01 GMT",
+      "score": 0.26752612,
+      "retrievedAt": "2026-11-02T16:02:24.744Z"
+    },
+    {
+      "id": "f887fecad6",
+      "url": "https://www.just-food.com/news/molinos-notco-argentina-uruguay-acquisition/",
+      "title": "Molinos Río de la Plata to buy NotCo units in Argentina, Uruguay - Global Food Industry News",
+      "snippet": "# Molinos Río de la Plata to buy NotCo units in Argentina, Uruguay. The Argentine food company said the addition of NotCo represents “a clear opportunity to continue expanding the consumption occasions” it caters to. Molinos Río de la Plata has agreed to acquire NotCo’s plant-based food and beverage businesses in Argentina and Uruguay. In a filing, the Argentine food company said the addition of NotCo represents “a clear opportunity to continue expanding the consumption occasions” it caters to, while adding “innovation credentials based on trends associated with a new generation of consumers”. Victoria, Buenos Aires-headquartered Molinos Río de la Plata has a portfolio spanning products such as packaged frozen foods, pasta, coffee and wine. The Molinos Río de la Plata agreement only covers the NotCo branded business in Argentina and Uruguay. In September 2024, Molinos Río de la Plata agr",
+      "provider": "tavily",
+      "publishedAt": "Thu, 11 Jun 2026 08:44:02 GMT",
+      "score": 0.13118461,
+      "retrievedAt": "2026-11-02T16:02:24.744Z"
+    },
+    {
+      "id": "19b82e4c1d",
+      "url": "https://www.accountingtoday.com/news/xero-shifts-to-tiered-pricing-model-for-developers",
+      "title": "Xero shifts to tiered pricing model for developers - Accounting Today",
+      "snippet": "Small business accounting platform Xero plans to shift third party app developers from a revenue share commercial model to a new tiered pricing structure based on API usage and connections. Exempted from the new pricing model include bespoke integrations for accountant and bookkeepers built for their own practice or a single client; custom connections; financial services applications in banking, credit and payments that operate on different commercial contracts; apps that solely convert data from other accounting platforms into Xero; and franchise apps built specifically for franchise networks. \"As the Xero ecosystem grows, the new tiering model and usage based pricing is designed to meet app partners where they are in their app development journey, making it easier to access benefits, and making it clearer to forecast and control their pricing as they grow and scale. Xero plans to shift",
+      "provider": "tavily",
+      "publishedAt": "Mon, 15 Dec 2025 21:47:31 GMT",
+      "score": 0.03456999,
+      "retrievedAt": "2026-11-02T16:02:24.744Z"
+    },
+    {
+      "id": "20be39f675",
+      "url": "https://www.hospitalitynet.org/news/4132634/mews-unveils-the-operating-system-for-hospitality",
+      "title": "Mews unveils the operating system for hospitality - Hospitality Net",
+      "snippet": "# Mews unveils the operating system for hospitality. ## Five launches converge into one AI-native operating system, all built for the hotel, not for the acronyms. Mews launches five new products at Unfold 2026, completing an AI-native operating system that unifies PMS, RMS, messaging, automations, and accounts receivable on a single data model, citing 476% three-year ROI per IDC research. **Amsterdam – The average hotel runs on eight to ten different software vendors:** a property management system (PMS) for reservations, a revenue management system (RMS) for pricing, a separate inbox for messaging, a separate kiosk for check-in, a separate point of sale (POS) for F&B, a separate receivables tool to chase what hasn't been paid. In **2015**, the first open API in hotel software, the first native guest messaging built into a PMS, and the first embedded PMS payments. At Mews Unfold today, M",
+      "provider": "tavily",
+      "publishedAt": "Wed, 27 May 2026 11:00:00 GMT",
+      "score": 0.031502426,
+      "retrievedAt": "2026-11-02T16:02:24.744Z"
+    }
+  ],
+  "providersUsed": [
+    "tavily"
+  ],
+  "cached": false,
+  "calls": 1,
+  "latencyMs": 5349
+}

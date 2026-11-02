@@ -1,0 +1,80 @@
+{
+  "evidence": [
+    {
+      "id": "0098709c75",
+      "url": "https://livecontext.ai/integrations/spoonacular",
+      "title": "Spoonacular integration",
+      "snippet": "What are the Spoonacular API rate limits? Spoonacular documents 60 requests per minute. Free tier: 50 points/day; most endpoints cost 1 point + 0.01 per result.",
+      "provider": "tavily",
+      "score": 0.9100432,
+      "retrievedAt": "2026-11-02T16:02:34.983Z"
+    },
+    {
+      "id": "cef5ec1e58",
+      "url": "https://apis.io/rate-limits/spoonacular/spoonacular-rate-limits",
+      "title": "Spoonacular Rate Limits | APIs.io Rate Limits",
+      "snippet": "Spoonacular · Rate Limits # Spoonacular Rate Limits Spoonacular enforces two layers of limiting, both scoped to the API key. A request-rate / concurrency limit applies per second and is fixed by the subscription tier (Free 1 req/s and 2 concurrent, up to Chef 20 req/s and 20 concurrent). Separately, a daily points quota meters total consumption: every call costs points (typically 1 point + 0.01 per result, with surcharges for nutrition, image generation, and video extraction). When the daily quota is exhausted the Free tier returns HTTP 402; paid tiers continue and bill the overage. Quotas reset at midnight UTC. Usage is reported back in response headers on every call. [...] Method: `generated`, dated 2026-06-03. Written by API Evangelist on 2026-06-03 and not verified against a page the provider published. Treat every limit as unconfirmed until a dated transcription replaces it. View So",
+      "provider": "tavily",
+      "score": 0.8884594,
+      "retrievedAt": "2026-11-02T16:02:34.983Z"
+    },
+    {
+      "id": "f4a3ce040f",
+      "url": "https://foodashi.com/blog/recipe-api-comparison-2026",
+      "title": "Recipe API Comparison 2026 — The Definitive Developer Guide – Foodashi",
+      "snippet": "The main consideration for developers is the daily points-based pricing model. Rather than charging per request, Spoonacular assigns a point cost to each call — commonly around 1 base point per request plus roughly 0.01 point per result, with surcharges for features like nutrition, image widgets and video extraction. Because cost depends on result counts and which features you enable, it can be harder to forecast than a flat per-request price. As of June 2026, Spoonacular's published pricing lists a free tier (50 points/day, with an attribution backlink required) and paid plans of Cook $29/mo, Culinarian $79/mo and Chef $149/mo, plus a custom Enterprise tier; once the daily quota is exhausted the free tier returns an HTTP 402 until the next daily reset, while paid plans add per-point [...] Diet and allergen tagging is included (with automatic dietary classification for patterns such as v",
+      "provider": "tavily",
+      "score": 0.8815438,
+      "retrievedAt": "2026-11-02T16:02:34.983Z"
+    },
+    {
+      "id": "374c59b4ab",
+      "url": "https://stackgate.ai/docs/integrations/spoonacular",
+      "title": "Spoonacular MCP Integration — stackgate.ai",
+      "snippet": "1. Open My Integrations → Spoonacular. 2. Click Connect & enable without filling in the API key field. All users without a personal override share the hub key's daily point quota. ### Option B — Personal Spoonacular API key Use your own subscription and quota: 1. Sign up at spoonacular.com/food-api (a free tier is available for development). 2. Copy your API key from the Spoonacular console. 3. In stackgate.ai, open My Integrations → Spoonacular. 4. Paste your key in Spoonacular API key (optional override) and click Connect & enable. See Spoonacular API documentation for pricing tiers and daily point limits. ## Using with AI clients",
+      "provider": "tavily",
+      "score": 0.86632514,
+      "retrievedAt": "2026-11-02T16:02:34.983Z"
+    },
+    {
+      "id": "92f25a4793",
+      "url": "https://spoonacular.com/food-api/pricing",
+      "title": "spoonacular recipe and food API",
+      "snippet": "spoonacular recipe and food API 50 points/day then no more calls 1 request/s 2 conc. req. # $ 29 /mo 1,500 points/day then $0.005/point 5 requests/s 5 conc. req. # $ 79 /mo 4,500 points/day then $0.004/point 10 requests/s 10 conc. req. # $ 149 /mo 10,000 points/day then $0.002/point 20 requests/s 20 conc. req. ... All plans are month to month and can be cancelled at any time. Note: changing your subscription - including downgrading - immediately changes the conditions of your subscription to that of the new plan. Questions? Please read this explanation of quotas and rate limiting here. ... Every API plan comes with an allotted number of requests, tinyrequests, and results, and every endpoint \"costs\" a certain amount of these. Here you'll find a comprehensive list of endpoints and what effect they will have on your quotas. #### How much does the API cost? We offer five plans: Free ($0/mon",
+      "provider": "exa",
+      "retrievedAt": "2026-11-02T16:02:34.983Z"
+    },
+    {
+      "id": "c2362a4b3d",
+      "url": "https://spoonacular.com/food-api/docs",
+      "title": "spoonacular recipe and food API",
+      "snippet": "#### Quotas Calling this endpoint requires 1 point and 0.01 points per recipe returned. Learn more about quotas. ... #### Quotas Calling this endpoint requires 1 point and ... points per result returned. Since this endpoint combines",
+      "provider": "exa",
+      "retrievedAt": "2026-11-02T16:02:34.983Z"
+    },
+    {
+      "id": "5ab0d2676e",
+      "url": "https://rapidapi.com/spoonacular/api/recipe-food-nutrition/pricing",
+      "title": "Spoonacular® Recipe, Food, Nutrition API | RapidAPI",
+      "snippet": "RapidAPI partners directly with API providers to give you no-fuss, transparent pricing. Basic $0.00 /mo results 400 / Day + $0.003 tinyrequests 400 / Day + $0.003 requests 40 / Day + $0.007 Support On-Demand API Endpoints Rate Limit 2 requests per second Bandwidth Platform Fee 10240MB / Month + $0.001 per 1MB Pro $29.00 /mo results 5,000 / Day + $0.003 tinyrequests 5,000 / Day + $0.001 500 / Day + $0.004 Support On-Demand API Endpoints Bandwidth Platform Fee 10240MB / Month + $0.001 per 1MB Ultra $99.00 /mo results 25,000 / Day + $0.003 tinyrequests 50,000 / Day + $0.001 2,500 / Day + $0.004 Bandwidth Platform Fee 10240MB / Month + $0.001 per 1MB Mega $999.00 /mo 100,000 / Day + $0.001 200,000 / Day + $0.001 30,000 / Day + $0.001 Support On-Demand API Endpoints Bandwidth Platform Fee 10240MB / Month + $0.001 per 1MB",
+      "provider": "exa",
+      "retrievedAt": "2026-11-02T16:02:34.983Z"
+    },
+    {
+      "id": "02e754e727",
+      "url": "https://rapidapi.com/spoonacular/api/recipe-food-nutrition/discussions/2769",
+      "title": "Spoonacular® Recipe, Food, Nutrition API | RapidAPI",
+      "snippet": "Thanks for asking! That language is a broader template used to alert developers when they are approach a quota limit. It looks like you were approaching your daily limit, so were alerted by the quota. ... Team, We've received an email advising \"At this time you have consumed all of the allocated API calls under your BASIC subscription to the Recipe - Food - Nutrition API. If you continue to make calls this month, you will incur overage fees. \" Can you please also clarify the \"make calls this month\" ? Our pricing plan limits based on calls per day. Our expectation is that we can make 50 calls free of charge (except for complex recipe search which is calculated at 3 calls) in a 24h period. You're advising us that if we make further calls in the month we are liable for additional fees. Please clarify. Regards, THHOL Project Team",
+      "provider": "exa",
+      "retrievedAt": "2026-11-02T16:02:34.983Z"
+    }
+  ],
+  "providersUsed": [
+    "tavily",
+    "exa"
+  ],
+  "cached": false,
+  "calls": 2,
+  "latencyMs": 2865,
+  "agreement": 0
+}

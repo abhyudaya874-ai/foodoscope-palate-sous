@@ -1,9 +1,7 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# Palate + Sous (Foodoscope Fork It 2026)
 
-## This is NOT the Next.js you know
+Gamified profile cards plus **Sous**, an autonomous agent that probes the Foodoscope APIs, ships verified fixes, and proves it from an event log.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
+- Rules live in `.devin/rules/` (auto-loaded by trigger). Read `00-mission.md` and `15-small-model-guardrails.md` first. Contract files in `reference/` are copied verbatim.
+- Workflows (run in order): `/bootstrap` → `/build-llm-gateway` → `/build-live-workspace` → `/build-sous-agent` → `/build-search-intel` → `/build-browser-agent` → `/build-ui-shell` → `/build-gamification` → `/proof-pack` → `/demo-replay` → `/verify-and-ship`.
+- Never invent numbers (`NA` / `[measure]`). Never exceed `BUDGET.json`. Act, don't ask, unless a secret is missing or an action is destructive.

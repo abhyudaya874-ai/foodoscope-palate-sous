@@ -1,0 +1,50 @@
+{
+  "evidence": [
+    {
+      "id": "985a1a10b0",
+      "url": "https://samsung.gadgethacks.com/news/samsung-smartthings-api-pricing-new-fees-and-who-they-affect",
+      "title": "Samsung SmartThings API Pricing: New Fees and Who They Affect << Samsung :: Gadget Hacks",
+      "snippet": "Samsung is ending free access to the SmartThings API, with paid subscription tiers targeting availability in October 2026. Samsung is describing it as a developer pricing update, but the users most likely to feel the new Samsung SmartThings API pricing aren't software companies with engineering budgets they're hobbyists and power users who've relied on the API as a bridge between Samsung's ecosystem and more open platforms like Home Assistant. Free access remains confirmed through Q3, so [...] The SmartThings integration doesn't break that model entirely. Home Assistant still runs locally, and the vast majority of its integrations don't touch Samsung's API at all. But for users who rely on that specific bridge controlling Samsung-connected devices through Home Assistant what was a free connectivity layer becomes a billable service. [...] Commercial tiers are also planned, targeting busin",
+      "provider": "tavily",
+      "publishedAt": "Fri, 26 Jun 2026 18:53:00 GMT",
+      "score": 0.34700638,
+      "retrievedAt": "2026-11-02T16:02:18.397Z"
+    },
+    {
+      "id": "3b8d8c5c01",
+      "url": "https://tech-insider.org/samsung-refrigerator-software-update-dead-chuseok-2026",
+      "title": "Samsung Fridges Bricked for 48 Hours Before Chuseok [2026]",
+      "snippet": "though Samsung’s internal review of food-spoilage compensation is still active and could shift the story’s trajectory in the days ahead. And there is, as of current coverage, no confirmed instance of a comparable failure at LG or another major refrigerator brand during this same window, so it would be inaccurate to frame this as an industry-wide event rather than a Samsung-specific incident. [...] after 2024. Samsung says it halted the rollout as soon as engineers spotted the error, but for a two-day window right before the country’s biggest food-centric holiday, some owners were left staring at appliances that had, in the words of Korean outlets covering the story, simply gone “dead.” [...] Recovery progress through September 24-25. Samsung’s own target was to have affected units restored by September 24, a date that has now passed. The sources gathered here do not confirm whether that ",
+      "provider": "tavily",
+      "publishedAt": "Thu, 24 Sep 2026 01:21:55 GMT",
+      "score": 0.21206917,
+      "retrievedAt": "2026-11-02T16:02:18.397Z"
+    },
+    {
+      "id": "03faeb948a",
+      "url": "https://www.androidauthority.com/best-new-android-apps-december-2025-3620920",
+      "title": "5 of the best new Android apps you need to try this December - Android Authority",
+      "snippet": "It’s a minimalist recipe manager that relies on a dedicated AI provider of your choosing. The app offers a choice of three: OpenRouter, OpenAI, or Google AI. Essentially, you can choose the service you prefer and proceed from there. This makes Sift a little more technical than Samsung Food, but it does give users far more control over how this data is crunched. [...] I use Samsung Food as my leading recipe manager, but having a backup option isn’t a terrible idea. Sift throws its hat into the ring, and I think that it’s well worth considering. [...] And it uses this AI to significant effect. Like Food, this allows Sift to easily import recipes from a plethora of sites, as the provider scrapes the recipe for important info (calories, cooking time, ingredients, quantities, etc.) and displays all this in a particularly fetching UI. You can also add recipes manually if you don’t want to go t",
+      "provider": "tavily",
+      "publishedAt": "Mon, 01 Dec 2025 15:43:40 GMT",
+      "score": 0.09194332,
+      "retrievedAt": "2026-11-02T16:02:18.397Z"
+    },
+    {
+      "id": "19981db799",
+      "url": "https://www.dcrainmaker.com/2026/01/garmin-connect-nutrition-logging-connect.html",
+      "title": "Garmin Adds Food and Nutrition Logging to Connect+: Worth It? | DC Rainmaker",
+      "snippet": "I am fracked. I tried to use the new Nutrition feature to see if I can stop paying for MFP. Turns out no, 75% of things I scan and I known are in MFP are not in their database. So I tried going back. I reconnected MFP and still it shows me the friggin nutrition. So, since nutrition is more important to me than Garmin itself, seems I am going to have to use my Samsung Galaxy Watch Ultra until they fix it or just leave Garmin. Reply 15. Donna [...] I know that anyone can use the Dexcom API and I think the Strava API is still open for anyone to use. I get that Garmin doesn’t want to overload and crash their system. That the hardware infrastructure behind the API cost big $$ yearly. So restrictions need to be in place, but … It is 2026, everyone still wants their own sandbox. Maybe Des, Shane, and you need to spear head an effort to get everyone to play nice with each other. Be more open, [.",
+      "provider": "tavily",
+      "publishedAt": "Mon, 05 Jan 2026 11:10:40 GMT",
+      "score": 0.045339987,
+      "retrievedAt": "2026-11-02T16:02:18.397Z"
+    }
+  ],
+  "providersUsed": [
+    "tavily"
+  ],
+  "cached": false,
+  "calls": 1,
+  "latencyMs": 2667
+}

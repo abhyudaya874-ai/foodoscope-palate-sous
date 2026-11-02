@@ -9,6 +9,8 @@ export interface BudgetConfig {
   maxLlmTokensPerRun: number;
   perRoleTokenCaps: Record<string, number>;
   foodoscopeTokenWallet: number;
+  maxSearchCalls?: number;
+  maxBrowserSteps?: number;
 }
 
 export function loadBudget(): BudgetConfig {

@@ -1,0 +1,4 @@
+{ "name": "reference", "private": true, "type": "module",
+  "scripts": { "typecheck": "tsc --noEmit", "test": "vitest run" },
+  "dependencies": { "zod": "^3.23.8" },
+  "devDependencies": { "typescript": "^5.5.0", "vitest": "^2.1.0", "@types/node": "^22.0.0" } }

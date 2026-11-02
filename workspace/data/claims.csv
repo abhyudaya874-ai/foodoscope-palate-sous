@@ -1,0 +1,5 @@
+claim,verdict,ids,agreement,confidence,source_url,evidence_id
+Foodoscope FlavorDB lists over 1000 natural ingredients,supported,fde6802b86 202021f83a e27264173e 47e9313dc4 4b7314abed ef72f55486 45b98dc510 9b72de9bda,1,M,https://cosylab.iiitd.edu.in/flavordb,fde6802b86
+Spoonacular API has a free tier with daily point limits,NA,0098709c75 cef5ec1e58 f4a3ce040f 374c59b4ab 92f25a4793 c2362a4b3d 5ab0d2676e 02e754e727,0,L,https://livecontext.ai/integrations/spoonacular,0098709c75
+Foodpairing offers a commercial food-pairing API,supported,68d5759425 b08987602f a680566936 2b9ec346b1 3955ada4c3 d340b82dc4 993846bfa5 b1471913e5,1,M,https://docs.whisk.com/api/foodpairing,68d5759425
+claim,verdict,ids,agreement,confidence,source_url,evidence_id

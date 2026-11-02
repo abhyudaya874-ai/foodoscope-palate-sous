@@ -1,0 +1,50 @@
+{
+  "evidence": [
+    {
+      "id": "68c9e231bd",
+      "url": "https://www.hospitalitynet.org/news/4132142/core-principles-behind-scalable-hotel-digital-transformation",
+      "title": "Core Principles Behind Scalable Hotel Digital Transformation - Hospitality Net",
+      "snippet": "The article outlines how hotel groups should prioritize operational alignment, cloud infrastructure, and API connectivity over isolated technology investments for scalable growth. Hotel digital transformation has moved from a strategic ambition to an operational requirement. Many hotel companies still operate with fragmented systems. Technology is now central to how hotel groups operate, compete, and expand. Hotel digital transformation must align with the operating model to support scalable growth. ### Why hotel digital transformation must start with operations. Hotel digital transformation succeeds when it is aligned with the operating model. Many hotel groups still rely on legacy, on-premise systems that limit flexibility and integration. Built on the Shiji Platform, the only truly global hotel technology platform, Shiji’s cloud-based portfolio includes Property Management System, Poi",
+      "provider": "tavily",
+      "publishedAt": "Thu, 30 Apr 2026 07:00:00 GMT",
+      "score": 0.031288605,
+      "retrievedAt": "2026-11-02T16:02:07.550Z"
+    },
+    {
+      "id": "3cf4e7fde3",
+      "url": "https://www.engadget.com/2236912/deepseek-ai-models-get-four-times-pricier/",
+      "title": "DeepSeek's AI Models Are About To Cost Four Times More - engadget.com",
+      "snippet": "DeepSeek's AI models are about to cost four times more. Prices at off-peak hours will be half the peak-hour pricing. With the announcement of DeepSeek V4 Pro, the company is raising its API pricing fourfold. The company said it's adopting a new peak and off-peak pricing to \"allocate resources more reasonably.\". Starting on August 16, the DeepSeek V4 Pro model will cost $3.96 for 1 million output tokens at peak hours, more than four times the current rate of $0.87. It will cost you half that amount ($1.98) during off-peak hours. Meanwhile, the DeepSeek V4 Flash model will set you back $1.32 for 1 million output tokens (from $0.28) during peak hours and $0.66 during off-peak. Even though DeepSeek will soon cost four times more, its V4 models are still a lot more affordable than many of its competitors. However, its low cost offering, GPT-5.6 Luna, costs $1.20, less than the DeepSeek V4 Fla",
+      "provider": "tavily",
+      "publishedAt": "Fri, 14 Aug 2026 10:58:24 GMT",
+      "score": 0.02792528,
+      "retrievedAt": "2026-11-02T16:02:07.550Z"
+    },
+    {
+      "id": "19b82e4c1d",
+      "url": "https://www.accountingtoday.com/news/xero-shifts-to-tiered-pricing-model-for-developers",
+      "title": "Xero shifts to tiered pricing model for developers - Accounting Today",
+      "snippet": "Small business accounting platform Xero plans to shift third party app developers from a revenue share commercial model to a new tiered pricing structure based on API usage and connections. Exempted from the new pricing model include bespoke integrations for accountant and bookkeepers built for their own practice or a single client; custom connections; financial services applications in banking, credit and payments that operate on different commercial contracts; apps that solely convert data from other accounting platforms into Xero; and franchise apps built specifically for franchise networks. \"As the Xero ecosystem grows, the new tiering model and usage based pricing is designed to meet app partners where they are in their app development journey, making it easier to access benefits, and making it clearer to forecast and control their pricing as they grow and scale. Xero plans to shift",
+      "provider": "tavily",
+      "publishedAt": "Mon, 15 Dec 2025 21:47:31 GMT",
+      "score": 0.027358351,
+      "retrievedAt": "2026-11-02T16:02:07.550Z"
+    },
+    {
+      "id": "20be39f675",
+      "url": "https://www.hospitalitynet.org/news/4132634/mews-unveils-the-operating-system-for-hospitality",
+      "title": "Mews unveils the operating system for hospitality - Hospitality Net",
+      "snippet": "# Mews unveils the operating system for hospitality. ## Five launches converge into one AI-native operating system, all built for the hotel, not for the acronyms. Mews launches five new products at Unfold 2026, completing an AI-native operating system that unifies PMS, RMS, messaging, automations, and accounts receivable on a single data model, citing 476% three-year ROI per IDC research. **Amsterdam – The average hotel runs on eight to ten different software vendors:** a property management system (PMS) for reservations, a revenue management system (RMS) for pricing, a separate inbox for messaging, a separate kiosk for check-in, a separate point of sale (POS) for F&B, a separate receivables tool to chase what hasn't been paid. In **2015**, the first open API in hotel software, the first native guest messaging built into a PMS, and the first embedded PMS payments. At Mews Unfold today, M",
+      "provider": "tavily",
+      "publishedAt": "Wed, 27 May 2026 11:00:00 GMT",
+      "score": 0.026925152,
+      "retrievedAt": "2026-11-02T16:02:07.550Z"
+    }
+  ],
+  "providersUsed": [
+    "tavily"
+  ],
+  "cached": false,
+  "calls": 1,
+  "latencyMs": 6547
+}

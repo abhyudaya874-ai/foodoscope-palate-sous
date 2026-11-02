@@ -14,7 +14,7 @@ description: Multi-provider LLM gateway (OpenRouter, Groq, NVIDIA NIM), routing,
 
 # Roles, not model names
 Code asks for a **role**; the router maps role → ordered provider/model list.
-`router` (tiny, fast) · `planner` (reasoning) · `coder` (diffs, tests) · `matcher` (crosswalk, cheap, batchable) · `writer` (bug reports, digests, receipts).
+`router` (tiny, fast) · `planner` (reasoning) · `coder` (diffs, tests) · `matcher` (crosswalk, cheap, batchable) · `writer` (bug reports, digests, receipts) · `browser` (one JSON action per step, temp 0).
 
 # Contract (`src/lib/llm/gateway.ts`)
 - `complete({role, messages, schema?, stream?, budgetKey})` returns `{text, usage, provider, model, latencyMs}`.
@@ -25,7 +25,7 @@ Code asks for a **role**; the router maps role → ordered provider/model list.
 - Response cache keyed by hash(role, messages, schema) under `fixtures/llm-cache/`; demos replay from cache with zero network.
 
 # Budgets (`BUDGET.json`)
-Fields: `maxToolCallsPerRun`, `maxApiCalls`, `maxLlmTokensPerRun`, `perRoleTokenCaps`, `foodoscopeTokenWallet`. Every call decrements and emits `budget.update`; the UI Context bar reads from the same file.
+Fields: `maxToolCallsPerRun`, `maxApiCalls`, `maxLlmTokensPerRun`, `perRoleTokenCaps`, `foodoscopeTokenWallet`, `maxSearchCalls`, `maxBrowserSteps`. Every call decrements and emits `budget.update`; the UI Context bar reads from the same file.
 
 # Secrets
 Keys only in `.env.local` (gitignored); `.env.example` lists names with empty values. Never log headers, keys or full prompts containing secrets. Keys are read server-side only; the browser never sees them. Redact before writing any fixture.

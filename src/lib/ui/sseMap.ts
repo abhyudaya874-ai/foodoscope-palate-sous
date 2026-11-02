@@ -25,6 +25,8 @@ const EVENT_TO_SSE: Record<string, SseType | null> = {
   "fix.verified": "test.result",
   "report.drafted": "tool.end",
   "xp.awarded": "xp",
+  "search.call": "tool.end",
+  "browser.step": "tool.end",
 };
 
 export function eventToSseType(type: string): SseType | null {

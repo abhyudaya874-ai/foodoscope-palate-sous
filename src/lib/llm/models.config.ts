@@ -31,6 +31,11 @@ export const ROLE_ROUTES: Record<Role, { provider: ProviderId; prefer?: RegExp[]
     { provider: "nvidia", prefer: [/instruct|chat|70b/i] },
     { provider: "groq", prefer: [/70b|instruct/i] },
   ],
+  browser: [
+    { provider: "groq", prefer: [/8b|instant|small|json/i] },
+    { provider: "openrouter", prefer: [/mini|small|flash|haiku/i] },
+    { provider: "nvidia", prefer: [/8b|small/i] },
+  ],
 };
 
 // Ids that are never chat-completion models (embeddings, guards, audio, vision encoders).

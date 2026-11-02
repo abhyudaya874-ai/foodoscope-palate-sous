@@ -1,0 +1,82 @@
+{
+  "evidence": [
+    {
+      "id": "68d5759425",
+      "url": "https://docs.whisk.com/api/foodpairing",
+      "title": "Foodpairing - Whisk Docs",
+      "snippet": "Oct 22, 2021 — Whisk API Reference 2.0 Foodpairing. Get suitable recipes by a canonical name of a product … paging can be found in API. Allows to get products",
+      "provider": "tavily",
+      "score": 0.5826579,
+      "retrievedAt": "2026-11-02T16:02:37.850Z"
+    },
+    {
+      "id": "b08987602f",
+      "url": "https://github.com/foodpairing",
+      "title": "Foodpairing",
+      "snippet": "an API Infrastructure service which handles API Keys, Rate Limiting, Analytics, Billing Payments and Developer Management. Includes a configurable API",
+      "provider": "tavily",
+      "score": 0.5037359,
+      "retrievedAt": "2026-11-02T16:02:37.850Z"
+    },
+    {
+      "id": "a680566936",
+      "url": "https://www.eitfood.eu/community/startups/foodpairing",
+      "title": "FoodPairing",
+      "snippet": "FoodPairing: AI-driven flavour intelligence for food & beverage companies. Personalised dietary recommendations & predictive product development.",
+      "provider": "tavily",
+      "score": 0.46687052,
+      "retrievedAt": "2026-11-02T16:02:37.850Z"
+    },
+    {
+      "id": "2b9ec346b1",
+      "url": "https://www.reddit.com/r/webdev/comments/9834pm/looking_for_api_for_food_pairing_react",
+      "title": "Looking for API for Food Pairing - React & Python/Django : r/webdev",
+      "snippet": "Our project is to make a full stack Food and Wine pairing app for the web. We will be using React with a Python/Django backend.",
+      "provider": "tavily",
+      "score": 0.45711306,
+      "retrievedAt": "2026-11-02T16:02:37.850Z"
+    },
+    {
+      "id": "3955ada4c3",
+      "url": "https://api.foodpairing.com/",
+      "title": "Foodpairing API",
+      "snippet": "## Reduce innovation risk by systematically evaluating thousands of product ... ### Technical Features - RESTful API architecture - JSON responses with complete ... Python, JavaScript, R - Webhook support for async workflows - Rate limiting:",
+      "provider": "exa",
+      "retrievedAt": "2026-11-02T16:02:37.850Z"
+    },
+    {
+      "id": "d340b82dc4",
+      "url": "https://www.foodpairing.com/terms-of-service/",
+      "title": "Terms of service | Foodpairing ® - The Flavor Intelligence Company - Flavor ID",
+      "snippet": "| | Customer Input | Data, information, or material submitted by Customer or Authorized Users during use of the Platform. | | Customer-Specific Model | A separate, isolated instance of Foodpairing’s AI model that is deployed exclusively for a specific Customer, trained or fine-tuned using Model Training Data provided by that Customer, and logically and technically segregated from Foodpairing’s general-purpose models and from models deployed for other customers. | | Data Processing Addendum (DPA) | The data processing terms attached hereto or incorporated by reference governing the processing of personal data. | | Documentation | Foodpairing-provided documentation relating to the Services, as updated from time to time. | | Effective Date | The date of commencement as specified in the Order Form or Statement of Work. | | Fees | The amounts payable by Customer as set forth in the Order Form",
+      "provider": "exa",
+      "publishedAt": "2021-09-09T00:00:00.000Z",
+      "retrievedAt": "2026-11-02T16:02:37.850Z"
+    },
+    {
+      "id": "993846bfa5",
+      "url": "https://github.com/logangingerich/foodpairing",
+      "title": "logangingerich/foodpairing",
+      "snippet": "# Foodpairing Ruby Gem The Foodpairing Ruby gem is a simply Ruby wrapper for the Foodpairing API. For more information on the API itself, visit the Foodpairing Site and their Apiary site for documetation. To get started, add the gem to your Gemfile: ```",
+      "provider": "exa",
+      "retrievedAt": "2026-11-02T16:02:37.850Z"
+    },
+    {
+      "id": "b1471913e5",
+      "url": "https://foodtechconnect.com/2016/04/20/big-food-data-recipes-from-unfamiliar-ingredients/",
+      "title": "Food+Tech Connect  Big Food Data to Create Tasty Recipes From Unfamiliar Ingredients",
+      "snippet": "So far we have analyzed more than 1700 ingredients to understand their aroma and flavor profiles to determine their best ingredient pairings. You can find all product information, discover potential matches, recipes, algorithms and much more through our Foodpairing API.",
+      "provider": "exa",
+      "publishedAt": "2016-04-20T12:08:02.000Z",
+      "retrievedAt": "2026-11-02T16:02:37.850Z"
+    }
+  ],
+  "providersUsed": [
+    "tavily",
+    "exa"
+  ],
+  "cached": false,
+  "calls": 2,
+  "latencyMs": 4103,
+  "agreement": 1
+}

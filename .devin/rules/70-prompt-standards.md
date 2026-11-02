@@ -18,7 +18,6 @@ description: Prompt engineering standards for every prompt the product sends to 
 - **Self-consistency (cheap):** for `matcher` on ambiguous names, sample 3 and take the majority; disagreement lowers `confidence` to `L`.
 - **Chain-of-verification:** after writing a bug report, a second `router`-role call checks each claim against the saved repro and returns `{claim, supported: bool, evidence}`; unsupported claims are deleted.
 - **Calibrated confidence:** every claim carries `H|M|L`; `L` renders greyed with a "needs check" chip.
-- **Abstention is a feature:** the schema must allow `NA`/`NOT_REPRODUCED`/`INCONCLUSIVE`; prompts reward it explicitly.
 - **Grounding:** a claim without `evidence` path or source URL is invalid output (schema-enforced).
 - **Least context:** pass IDs and summaries, fetch details by tool; never paste whole fixtures into prompts.
 - **Temperature:** 0-0.2 for code, schema and matching; ≤0.7 only for the `writer` role.

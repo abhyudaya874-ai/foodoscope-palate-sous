@@ -1,0 +1,7 @@
+# rivals for RivalWatch (one per line: name | optional seed url)
+Spoonacular | https://spoonacular.com/food-api
+Edamam | https://developer.edamam.com
+Foodpairing | https://www.foodpairing.com
+Samsung Food | https://samsungfood.com
+HealthifyMe | https://www.healthifyme.com
+NotCo | https://notco.com

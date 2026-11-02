@@ -1,6 +1,6 @@
 import type { z } from "zod";
 
-export type Role = "router" | "planner" | "coder" | "matcher" | "writer";
+export type Role = "router" | "planner" | "coder" | "matcher" | "writer" | "browser";
 export type ProviderId = "groq" | "nvidia" | "openrouter";
 
 export interface ChatMessage {

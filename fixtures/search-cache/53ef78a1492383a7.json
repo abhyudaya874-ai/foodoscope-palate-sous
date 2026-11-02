@@ -1,0 +1,50 @@
+{
+  "evidence": [
+    {
+      "id": "f62863c6a1",
+      "url": "https://ca.finance.yahoo.com/news/uk-business-hit-daylight-robbery-094408923.html",
+      "title": "UK business hit by 'daylight robbery' 1500% price hike for invoicing software - Yahoo! Finance Canada",
+      "snippet": "Customers have shared their outrage after an app used by many businesses to track timesheets and produce invoices hiked bills by as much as 1500%, with one person calling it \"daylight robbery\". Harvest was acquired by the Italian tech company Bending Spoons in 2025, and changed its pricing structure the following year. Haldenby, whose business consists of up to 15 staff in the UK at any one time, with sister companies also in the US and Australia, said he was \"in shock\" when he received an email detailing the price changes. \"We have used Harvest in our three companies for at least 15 years and have been loyal and enthusiastic advocates of it,\" he said. \"But if we were to accept this increase it would double our IT spend for the year, which is completely unaffordable.\". Damian Foks, head of consulting at Valueships, said the Harvest price hike was \"a clear sign of a shift in the company's",
+      "provider": "tavily",
+      "publishedAt": "Thu, 20 Aug 2026 10:01:57 GMT",
+      "score": 0.046261825,
+      "retrievedAt": "2026-11-02T16:02:00.622Z"
+    },
+    {
+      "id": "78f336202f",
+      "url": "https://www.bbc.co.uk/news/articles/clyq011414eo",
+      "title": "Harvest price hike hits business with 1500% increase in bills - BBC",
+      "snippet": "Image 1: Richard Haldenby Richard Haldenby is standing with his arms crossed wearing a cream jacket and a blue shirt and green tie, arms crossed, in an open courtyard. He has a name badge on his jacket.Richard Haldenby. Richard Haldenby said he was \"in shock\" when he received an email detailing the price increase. Harvest was acquired by the Italian tech company Bending Spoons in 2025, and changed its pricing structure the following year. Haldenby, whose business consists of up to 15 staff in the UK at any one time, with sister companies also in the US and Australia, said he was \"in shock\" when he received an email detailing the price changes. Image 2: Richard Haldenby A screenshot of an email which notifies the user, Richard Haldenby about changes to the price increaseRichard Haldenby. The email received by Richard Haldenby about the monthly price increase to use Harvest.",
+      "provider": "tavily",
+      "publishedAt": "Thu, 20 Aug 2026 09:44:04 GMT",
+      "score": 0.035641678,
+      "retrievedAt": "2026-11-02T16:02:00.622Z"
+    },
+    {
+      "id": "3cf4e7fde3",
+      "url": "https://www.engadget.com/2236912/deepseek-ai-models-get-four-times-pricier/",
+      "title": "DeepSeek's AI Models Are About To Cost Four Times More - engadget.com",
+      "snippet": "DeepSeek's AI models are about to cost four times more. Prices at off-peak hours will be half the peak-hour pricing. With the announcement of DeepSeek V4 Pro, the company is raising its API pricing fourfold. The company said it's adopting a new peak and off-peak pricing to \"allocate resources more reasonably.\". Starting on August 16, the DeepSeek V4 Pro model will cost $3.96 for 1 million output tokens at peak hours, more than four times the current rate of $0.87. It will cost you half that amount ($1.98) during off-peak hours. Meanwhile, the DeepSeek V4 Flash model will set you back $1.32 for 1 million output tokens (from $0.28) during peak hours and $0.66 during off-peak. Even though DeepSeek will soon cost four times more, its V4 models are still a lot more affordable than many of its competitors. However, its low cost offering, GPT-5.6 Luna, costs $1.20, less than the DeepSeek V4 Fla",
+      "provider": "tavily",
+      "publishedAt": "Fri, 14 Aug 2026 10:58:24 GMT",
+      "score": 0.029093578,
+      "retrievedAt": "2026-11-02T16:02:00.622Z"
+    },
+    {
+      "id": "19b82e4c1d",
+      "url": "https://www.accountingtoday.com/news/xero-shifts-to-tiered-pricing-model-for-developers",
+      "title": "Xero shifts to tiered pricing model for developers - Accounting Today",
+      "snippet": "Small business accounting platform Xero plans to shift third party app developers from a revenue share commercial model to a new tiered pricing structure based on API usage and connections. Exempted from the new pricing model include bespoke integrations for accountant and bookkeepers built for their own practice or a single client; custom connections; financial services applications in banking, credit and payments that operate on different commercial contracts; apps that solely convert data from other accounting platforms into Xero; and franchise apps built specifically for franchise networks. \"As the Xero ecosystem grows, the new tiering model and usage based pricing is designed to meet app partners where they are in their app development journey, making it easier to access benefits, and making it clearer to forecast and control their pricing as they grow and scale. Xero plans to shift",
+      "provider": "tavily",
+      "publishedAt": "Mon, 15 Dec 2025 21:47:31 GMT",
+      "score": 0.028829927,
+      "retrievedAt": "2026-11-02T16:02:00.622Z"
+    }
+  ],
+  "providersUsed": [
+    "tavily"
+  ],
+  "cached": false,
+  "calls": 1,
+  "latencyMs": 6922
+}

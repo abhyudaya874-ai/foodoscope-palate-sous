@@ -1,0 +1,81 @@
+{
+  "evidence": [
+    {
+      "id": "fde6802b86",
+      "url": "https://cosylab.iiitd.edu.in/flavordb",
+      "title": "FlavorDB",
+      "snippet": "> > FlavorDB comprises of 25595 flavor molecules representing an array of tastes and odors. Among these 2254 molecules are associated with 936 natural ingredients belonging to 34 categories. The dynamic, user-friendly interface of the resource facilitates exploration of flavor molecules for divergent applications: finding molecules matching a desired flavor or structure; exploring molecules of an ingredient; discovering novel food pairings; finding the molecular essence of food ingredients; associating chemical features with a flavor and more. Data-driven studies based on FlavorDB can pave the way for an improved understanding of flavor mechanisms. > [...] > Flavor is an expression of olfactory and gustatory sensations experienced through a multitude of chemical processes triggered by molecules. Beyond their key role in defining taste and smell, flavor molecules also regulate metabolic p",
+      "provider": "tavily",
+      "score": 0.72489023,
+      "retrievedAt": "2026-11-02T16:02:30.095Z"
+    },
+    {
+      "id": "202021f83a",
+      "url": "https://www.linkedin.com/pulse/flavordb-resource-flavor-molecules-ganesh-bagler",
+      "title": "FlavorDB: A resource for flavor molecules",
+      "snippet": "With this vision, we have created FlavorDB, a comprehensive database of flavor molecules: . It comprises of 25595 flavor molecules representing an array of tastes and odors. Among these 2254 molecules are associated with 936 natural ingredients belonging to 34 categories. The dynamic, user-friendly interface of the resource facilitates exploration of flavor molecules for divergent applications: finding molecules matching a desired flavor or structure; exploring molecules of an ingredient; discovering novel food pairings; finding the molecular essence of food ingredients; associating chemical features with a flavor and more. Such data-driven studies springing out of FlavorDB are expected to pave the way for an improved understanding of flavor mechanisms.",
+      "provider": "tavily",
+      "score": 0.7211353,
+      "retrievedAt": "2026-11-02T16:02:30.095Z"
+    },
+    {
+      "id": "e27264173e",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5753196",
+      "title": "FlavorDB: a database of flavor molecules",
+      "snippet": "2254 molecules are associated with 936 natural ingredients belonging to 34 categories. The dynamic, user-friendly interface of the resource facilitates exploration of flavor molecules for divergent applications: finding molecules matching a desired flavor or structure; exploring molecules of an ingredient; discovering novel food pairings; finding the molecular essence of food ingredients; associating chemical features with a flavor and more. Data-driven studies based on FlavorDB can pave the way for an improved understanding of flavor mechanisms. [...] ## DATABASE OVERVIEW FlavorDB is a resource with extensive coverage of 25,595 flavor molecules (Figure 1). Among molecules listed in the database, 2254 have been reported to be found in 936 natural entities/ingredients. These natural ingredients have further been classified into 34 categories, and mapped to 527 distinct natural sources. An",
+      "provider": "tavily",
+      "score": 0.7062922,
+      "retrievedAt": "2026-11-02T16:02:30.095Z"
+    },
+    {
+      "id": "47e9313dc4",
+      "url": "https://ngdc.cncb.ac.cn/databasecommons/database/id/3803",
+      "title": "FlavorDB - Database Commons",
+      "snippet": "FlavorDB comprises of 25595 flavor molecules representing an array of tastes and odors. Among these 2254 molecules are associated with 936 natural ingredients",
+      "provider": "tavily",
+      "score": 0.6847074,
+      "retrievedAt": "2026-11-02T16:02:30.095Z"
+    },
+    {
+      "id": "4b7314abed",
+      "url": "https://www.foodoscope.com/about",
+      "title": "Foodoscope",
+      "snippet": "### FlavorDB & RecipeDB Launch Release of the first large-scale flavor molecule database to the scientific community. ### Ingredient Network Analysis Over 1,000 ingredients mapped with chemical and culinary context. ### Network Effect The dataset grows to encompass global cuisines - a continuously evolving knowledge layer shaped by research and real-world use. ### Public Launch Accessible ecosystem - tools for chefs, developers, researchers, and food lovers to explore food through data 118K+ VALIDATED RECIPES 1,000+ UNIQUE INGREDIENTS 2,400+ FLAVOR MOLECULES",
+      "provider": "exa",
+      "retrievedAt": "2026-11-02T16:02:30.095Z"
+    },
+    {
+      "id": "ef72f55486",
+      "url": "https://www.foodoscope.com/",
+      "title": "Foodoscope",
+      "snippet": "Computational Gastronomy APIs for recipes, flavors, nutrition, health and sustainability recipes, flavors, nutrition, health and sustainability # Explore APIs Extensive APIs for traditional recipes, nutrition profiles, flavor molecules of natural ingredients, health associations, and carbon footprints. RecipeDB 118,000+ recipes from across the globe FlavorDB Flavour Profiles of 1000+ natural Ingredients SpiceRx Phytochemical-disease associations for spices CocktailDB 17000+ cocktail recipes with ingredients & nutrition SustainableFoodDB Environmental impact of 500+ foods",
+      "provider": "exa",
+      "retrievedAt": "2026-11-02T16:02:30.095Z"
+    },
+    {
+      "id": "45b98dc510",
+      "url": "https://www.linkedin.com/posts/foodoscope_foodoscope-foodtech-flavourdb-activity-7348364467870625792-1SLu",
+      "title": "🧪 What if you could pair ingredients based on science, not just instinct? | Foodoscope",
+      "snippet": "🧪 What if you could pair ingredients based on science, not just instinct? FlavourDB by Foodoscope maps thousands of ingredients based on their shared flavor molecules—helping chefs, food innovators, and developers create smarter, tastier combinations. From traditional recipes to breakthrough food products, FlavourDB brings molecular-level insights into everyday cooking and advanced food tech. Whether you’re building an app, designing a menu, or just experimenting in the kitchen—FlavourDB is your scientific co-chef. Explore flavor, intelligently.",
+      "provider": "exa",
+      "publishedAt": "2025-07-08T00:00:00.000Z",
+      "retrievedAt": "2026-11-02T16:02:30.095Z"
+    },
+    {
+      "id": "9b72de9bda",
+      "url": "https://linkedin.com/company/foodoscope",
+      "title": "foodoscope",
+      "snippet": "- [2026-10-06 · Posted · 7 reactions] [Foodoscope: turning food into structured intelligence For over a...](https://www.linkedin.com/posts/foodoscope_foodoscope-foodtech-startupindia-activity-7513262968655048704-GCbw) > Foodoscope: turning food into structured intelligence > > For over a decade, research at IIIT-Delhi's Computational Gastronomy lab has been quietly building one of the largest structured food datasets in the world. > > Foodoscope Technologies exists to put that research to work — as APIs that developers, food businesses, and researchers can build on. > > What we do: > - Turn food data into structured intelligence > - Provide APIs for recipes, flavors, nutrients & health > - Help food-tech startups and enterprises build smarter, data-backed products > > Our core products: > - RecipeDB API — 118,000+ recipes from 74 countries, with flavor and nutrition data > - FlavorDB API",
+      "provider": "exa",
+      "retrievedAt": "2026-11-02T16:02:30.095Z"
+    }
+  ],
+  "providersUsed": [
+    "tavily",
+    "exa"
+  ],
+  "cached": false,
+  "calls": 2,
+  "latencyMs": 4887,
+  "agreement": 1
+}

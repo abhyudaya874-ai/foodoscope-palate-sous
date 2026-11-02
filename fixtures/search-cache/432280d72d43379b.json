@@ -1,0 +1,40 @@
+{
+  "evidence": [
+    {
+      "id": "014cc3c650",
+      "url": "https://multiples.vc/private-comps/healthifyme",
+      "title": "HealthifyMe Funding, Investors & Competitors | Multiples",
+      "snippet": "a prior Series B of $12 million in February 2018 led by Sistema Asia Capital. By FY18 ending March 2019, HealthifyMe reported INR 24 crore in revenue, up significantly from INR 4 crore in FY17, driven by subscription pricing from INR 999 to 1,699 per month and improved monetization. The company had scaled to millions of users, with monthly revenues reaching INR 3 crore+ by mid-2018 and over 5 million lifetime users. HealthifyMe continued growing post-2018, crossing 25 million downloads by 2021 [...] HealthifyMe is still privately-owned, but its public comps includeMeta, Garmin, IQVIA, Bending Spoons, Revvity, Solventum, ICON plc, Tempus AI, Match Group and Kakao. [...] HealthifyMe is a Bangalore-headquartered AI-powered fitness and nutrition app operating in India, Indonesia, and the Middle East. Users track meals via photo scans, workouts with trainers, and vitals from wearables for per",
+      "provider": "tavily",
+      "publishedAt": "Mon, 24 Aug 2026 00:00:00 GMT",
+      "score": 0.5142789,
+      "retrievedAt": "2026-11-02T16:02:21.066Z"
+    },
+    {
+      "id": "cb9de0f353",
+      "url": "https://nutriscan.app/blog/posts/healthifyme-worth-it-2026-ria-ai-indian-food-tracker-f3167114ef",
+      "title": "Is HealthifyMe Accurate? Calories, Plans, MyFitnessPal Compared",
+      "snippet": "HealthifyMe plan pricing comparison showing monthly costs from Free to Pro plansFigure 1: HealthifyMe monthly pricing across plan tiers (INR): Free ₹0, Smart Plan ₹208, Pro ₹5,500 to ₹8,000 [...] WARNING Users report that the CGM experience within HealthifyMe still has usability issues, particularly around meal timestamp syncing. Log meals in real time for accurate glucose response analysis. ## HealthifyMe vs MyFitnessPal and Other Trackers 📊 ​ Understanding where HealthifyMe stands against the competition helps you make a smarter choice. [...] run from a free tier to the Smart Plan at roughly ₹2,499 a year, with Pro coaching at ₹5,500 to ₹8,000 a month. Prices here are Indian store prices as of mid 2026 and change by region.",
+      "provider": "tavily",
+      "publishedAt": "Sun, 26 Apr 2026 00:00:00 GMT",
+      "score": 0.39522812,
+      "retrievedAt": "2026-11-02T16:02:21.066Z"
+    },
+    {
+      "id": "f9aa446e49",
+      "url": "https://tracxn.com/d/companies/healthifyme/__K86BNFbaLyKGpgM_L_XxN0uKc3F5raCYvbhwfjyZmh8",
+      "title": "HealthifyMe - 2026 Company Profile, Team, Funding, Competitors & Financials - Tracxn",
+      "snippet": "| 6th | Logo for HealthifyMe HealthifyMe 2012, Bengaluru (India), Series C | Provider of AI-powered personalized nutrition and fitness coaching | $145M | Chiratae Ventures, SRI Capital & 56 others | 64/100 | | 7th | Logo for MyFitnessPal MyFitnessPal 2005, San Francisco (United States), Acquired | Provider of an application to track diet and calories | $18.2M | Accel, Kleiner Perkins & 2 others | 67/100 | [...] | Legal Entity Name | Date of Incorporation | Revenue | Latest Employee Count | Reports | --- --- | HEALTHIFYME PRIVATE LIMITED UEN: 201435901R , Singapore, Active | Dec 02, 2014 | $10M - $50M (As on Mar 31, 2024) | 243 (As on Dec 31, 2020) | Buy Now | | HEALTHIFYME WELLNESS PRIVATE LIMITED CIN: U72900KA2015PTC081060 , India, Active | Jun 22, 2015 | ₹100 - ₹500 Cr (As on Mar 31, 2025) | 131 (As on Apr 01, 2026) | Buy Now | [...] | 4th | Logo for Vivoo Vivoo 2017, United States, Se",
+      "provider": "tavily",
+      "publishedAt": "Sun, 18 Oct 2026 00:00:00 GMT",
+      "score": 0.27075326,
+      "retrievedAt": "2026-11-02T16:02:21.066Z"
+    }
+  ],
+  "providersUsed": [
+    "tavily"
+  ],
+  "cached": false,
+  "calls": 1,
+  "latencyMs": 3677
+}

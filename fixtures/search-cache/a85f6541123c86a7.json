@@ -1,0 +1,50 @@
+{
+  "evidence": [
+    {
+      "id": "434994a761",
+      "url": "https://www.foodpairing.com/industry/case/remy-cointreau",
+      "title": "Rémy Cointreau",
+      "snippet": "Foodpairing's API powered an intelligent menu creation tool that enabled bartenders to discover unexpected flavor combinations for Rémy Cointreau spirits.",
+      "provider": "tavily",
+      "publishedAt": "Mon, 05 Jan 2026 00:00:00 GMT",
+      "score": 0.42233846,
+      "retrievedAt": "2026-11-02T16:02:14.099Z"
+    },
+    {
+      "id": "4574d6d3be",
+      "url": "https://gastrona.app/business/api",
+      "title": "Food, Wine & Pairing API - Gastrona",
+      "snippet": "One API for recipes, a deep wine database, and meal-aware pairing — what to drink with what, and why. Scored, explainable results your product can build on.",
+      "provider": "tavily",
+      "publishedAt": "Sun, 07 Jun 2026 00:00:00 GMT",
+      "score": 0.34521618,
+      "retrievedAt": "2026-11-02T16:02:14.099Z"
+    },
+    {
+      "id": "0c0cef9fb2",
+      "url": "https://www.restaurantindia.in/article/why-restaurant-prices-could-rise-again-as-food-inflation-returns.17423",
+      "title": "Why Restaurant Prices Could Rise Again as Food Inflation Returns - Restaurant India",
+      "snippet": "## How Does a Kiosk Connect With a POS? The POS acts as an important bridge between the kiosk and the restaurant's operations. A simplified technology flow looks like this: Kiosk → Integration/API → POS → KDS → Kitchen [...] Ideally, the system should synchronise menu items, prices, modifiers, taxes and availability. Suppose a restaurant sells out of a particular dessert. If the menu system is properly integrated, that item can be marked unavailable across connected ordering channels. This prevents a customer from paying for something that the kitchen cannot provide. Restaurants should ask vendors whether the integration is native, API-based, middleware-based or custom-built. That difference can affect [...] still be where the relationship begins. But increasingly, it is not where the business ends.",
+      "provider": "tavily",
+      "publishedAt": "Wed, 28 Oct 2026 15:00:00 GMT",
+      "score": 0.05340838,
+      "retrievedAt": "2026-11-02T16:02:14.099Z"
+    },
+    {
+      "id": "7400c866c0",
+      "url": "https://aichef.pro/en/blog/best-recipe-costing-software-compared",
+      "title": "Best Recipe Costing Software 2026: 10 Tools Compared (Free & Paid) | AI Chef Pro Blog",
+      "snippet": "What sets AI Chef Pro apart is its artificial intelligence integration. The platform doesn’t just calculate costs—it predicts them. Users can input ingredient price changes and immediately see how menu items will be affected. The AI suggests optimal menu pricing based on target food cost percentages, identifies recipes with the highest profit margins, and even analyzes sales data to recommend which dishes to promote. With support for 7 languages, it’s ideal for international restaurant groups [...] With strong purchasing and inventory features alongside recipe costing, MarketMan provides a holistic view of food costs from procurement through plate. The platform’s vendor management tools help operators track supplier performance, compare pricing across vendors, and ensure consistent quality. [...] The platform’s API integrations connect seamlessly with enterprise inventory systems, procur",
+      "provider": "tavily",
+      "publishedAt": "Thu, 22 Oct 2026 00:00:00 GMT",
+      "score": 0.04229698,
+      "retrievedAt": "2026-11-02T16:02:14.099Z"
+    }
+  ],
+  "providersUsed": [
+    "tavily"
+  ],
+  "cached": false,
+  "calls": 1,
+  "latencyMs": 4296
+}

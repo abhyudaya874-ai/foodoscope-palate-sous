@@ -10,5 +10,7 @@
     "writer": 10000
   },
   "foodoscopeTokenWallet": 100,
-  "comment": "foodoscopeTokenWallet deliberately low; a human raises it after checking trial terms."
+  "comment": "foodoscopeTokenWallet deliberately low; a human raises it after checking trial terms.",
+  "maxSearchCalls": 12,
+  "maxBrowserSteps": 15
 }

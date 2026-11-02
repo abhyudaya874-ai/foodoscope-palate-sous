@@ -17,7 +17,7 @@ Probe → Detect → Fix → Verify → Ship → Report. Each stage emits events
 # Event schema (`src/lib/events/types.ts`)
 Append-only JSONL, one event per line:
 `{ id, ts, runId, type, actor: {provider, model} | "system", payload, evidence?: path }`
-Types: `run.start run.end budget.update llm.call probe.call bug.detected patch.proposed patch.applied test.run fix.verified report.drafted xp.awarded`.
+Types: `run.start run.end budget.update llm.call probe.call bug.detected patch.proposed patch.applied test.run fix.verified report.drafted xp.awarded search.call browser.step`.
 
 # Hard rules
 - **No repro, no bug. No failing-then-passing test, no verified fix.** A hypothesis that does not reproduce is reported as `NOT_REPRODUCED`, which is a valid and valuable result.

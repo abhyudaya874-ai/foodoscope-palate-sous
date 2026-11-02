@@ -27,6 +27,8 @@ export const eventSchemas = {
   "fix.verified": z.object({ ...base, type: z.literal("fix.verified"), payload: z.object({ bugId: z.string(), testPath: z.string(), failedBefore: z.boolean(), passesAfter: z.boolean() }) }),
   "report.drafted": z.object({ ...base, type: z.literal("report.drafted"), payload: z.object({ path: z.string(), bugId: z.string().optional(), approved: z.boolean() }) }),
   "xp.awarded": z.object({ ...base, type: z.literal("xp.awarded"), payload: z.object({ amount: z.number(), reason: z.string(), rankUp: z.boolean().optional() }) }),
+  "search.call": z.object({ ...base, type: z.literal("search.call"), payload: z.object({ intent: z.string(), query: z.string(), cached: z.boolean().optional(), providers: z.array(z.string()).optional(), results: z.number().optional(), calls: z.number().optional(), latencyMs: z.number().optional() }) }),
+  "browser.step": z.object({ ...base, type: z.literal("browser.step"), payload: z.object({ step: z.number(), url: z.string(), action: z.string(), ok: z.boolean().optional(), blocked: z.boolean().optional(), thought: z.string().optional() }) }),
 } as const;
 
 export const eventSchema = z.discriminatedUnion("type", [
@@ -34,6 +36,7 @@ export const eventSchema = z.discriminatedUnion("type", [
   eventSchemas["llm.call"], eventSchemas["probe.call"], eventSchemas["bug.detected"],
   eventSchemas["patch.proposed"], eventSchemas["patch.applied"], eventSchemas["test.run"],
   eventSchemas["fix.verified"], eventSchemas["report.drafted"], eventSchemas["xp.awarded"],
+  eventSchemas["search.call"], eventSchemas["browser.step"],
 ]);
 export type EventType = keyof typeof eventSchemas;
 export type AppEvent = z.infer<typeof eventSchema>;

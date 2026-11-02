@@ -24,3 +24,22 @@
 3. Bug claimed without repro — mitigated: repro-or-drop gate before `bug.detected`.
 4. Secret leaking into fixtures/logs — mitigated: `scripts/scan-secrets.sh` gate, redact-on-write.
 5. Budget overspend "to finish" — mitigated: BUDGET.json enforced in tools, stop-and-report.
+
+## Kit v2 install + modules (2026-11-02 ~21:10)
+
+ADR-1 | secrets moved from .env.local to ~/.config/palate-sous.env | kit v2's verbatim scan-secrets.sh greps .env.local and would flag the (chat-exposed) keys; external store keeps keys working AND scan clean | touched: src/lib/config.ts (single env reader)
+ADR-2 | kit README.md overwritten verbatim, product README restored after module work | ship rules require product README; kit file preserved in git history | touched: README.md
+
+Module A design note (search-intel):
+- inputs: rivals.txt list + claim strings -> SearchRequest; deps: keys via config.ts, cache fixtures/search-cache, maxCalls from BUDGET.json
+- outputs: workspace/data/rivals.csv + claims.csv; every row carries source_url + evidence_id; no evidence => NA
+- failure modes: replay cache miss => contract error (no network); budget => stop
+- proving tests: reference/tests/router.test.ts (6/6 pass)
+- exemplar copied: reference/src/lib/search/rival-watch.ts -> src/lib/intel/{rival-watch,claim-receipts}.ts
+
+Module B design note (browser-agent):
+- inputs: read-only goal + allowDomains; deps: Driver (Playwright or replay), decide via gateway role `browser` temp 0
+- outputs: extracted facts -> csv rows + browser.step events; done requires extracted evidence
+- failure modes: invalid model output x2 => failed; blocked host x3 => blocked; loop => failed; maxBrowserSteps => budget
+- proving tests: reference/tests/browser.test.ts (9/9 pass)
+- exemplar copied: reference/src/lib/browser/* verbatim; glue only in scripts/run-browser.ts (launcher + ReplayDriver)
