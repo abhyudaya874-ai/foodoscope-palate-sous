@@ -25,19 +25,24 @@ const PROVIDER_TONE: Record<string, string> = {
 };
 
 export function Sources({ rows, className, openSignal }: { rows: SourceRow[]; className?: string; openSignal?: number | null }) {
-  const [open, setOpen] = React.useState(false);
+  const [userOpen, setUserOpen] = React.useState(false);
   const [hl, setHl] = React.useState<number | null>(null);
+  const [prevSignal, setPrevSignal] = React.useState<number | null>(null);
+  // adjust state during render (React-sanctioned pattern; no setState-in-effect)
+  const signal = openSignal ?? null;
+  if (signal !== prevSignal) {
+    setPrevSignal(signal);
+    if (signal !== null) { setHl(signal); setUserOpen(true); }
+  }
   React.useEffect(() => {
-    if (openSignal !== undefined && openSignal !== null) {
-      setOpen(true);
-      setHl(openSignal);
-      const t = setTimeout(() => setHl(null), 2400);
-      return () => clearTimeout(t);
-    }
-  }, [openSignal]);
+    if (hl === null) return;
+    const t = setTimeout(() => setHl(null), 2400);
+    return () => clearTimeout(t);
+  }, [hl]);
+  const open = userOpen || hl !== null;
   if (rows.length === 0) return <span className="text-[11px] text-text-3">No sources yet — receipts appear with each probe.</span>;
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={setUserOpen}>
       <PopoverTrigger
         className={cn("inline-flex items-center gap-1.5 rounded-md border border-line-1 bg-bg-2 px-2 py-1 text-[11px] text-text-2 hover:text-text-1", className)}
       >
