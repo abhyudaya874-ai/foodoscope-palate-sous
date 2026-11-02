@@ -11,6 +11,7 @@ export interface Profile {
   rank: string;
   rankIndex: number;
   nextRankAt: number;
+  nextRankName: string;
   streak: number;
   badges: Badge[];
   banner: { from: string; to: string };
@@ -79,9 +80,10 @@ export function deriveProfile(events: AppEvent[], name = "Sous #1"): Profile {
   let rankIndex = 0;
   for (let i = 0; i < RANKS.length; i++) if (xp >= RANKS[i].at) rankIndex = i;
   const nextRankAt = rankIndex + 1 < RANKS.length ? RANKS[rankIndex + 1].at : RANKS[rankIndex].at;
+  const nextRankName = rankIndex + 1 < RANKS.length ? RANKS[rankIndex + 1].name : RANKS[rankIndex].name;
 
   return {
-    name, xp, rank: RANKS[rankIndex].name, rankIndex, nextRankAt,
+    name, xp, rank: RANKS[rankIndex].name, rankIndex, nextRankAt, nextRankName,
     streak: streakDays(fixDays),
     badges: earnedBadges.slice(0, 6),
     banner: AGENT_BANNER,
