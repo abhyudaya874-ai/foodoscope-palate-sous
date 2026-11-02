@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useState } from "react";
 import { useRunStream } from "@/lib/ui/useRunStream";
-import { mapEvents, type ViewItem } from "@/lib/ui/eventToView";
+import { mapEvents } from "@/lib/ui/eventToView";
 import { MessageScroller, Message, Reasoning, StackTrace, Shimmer } from "@/components/ai-elements/text";
 import { Tool } from "@/components/ai-elements/tooling";
 import { Plan, Queue, Confirmation } from "@/components/ai-elements/flow";

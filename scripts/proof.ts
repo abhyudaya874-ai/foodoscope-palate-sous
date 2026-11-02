@@ -77,7 +77,7 @@ lines.push("## Bugs by status");
 for (const [k, b] of bugs) lines.push(`- ${b.status}: ${b.title} ${src(b.evidence ?? k)}`);
 lines.push("");
 lines.push("## Verified fixes (failing before -> passing after)");
-for (const e of verified) lines.push(`- ${e.payload.bugId}: ${e.evidence} ${src(e.evidence ?? "")}`);
+for (const e of verified) lines.push(`- ${(e.payload as { bugId?: string }).bugId}: ${e.evidence} ${src(e.evidence ?? "")}`);
 if (!verified.length) lines.push("- none verified [measure]");
 lines.push("");
 lines.push("## Test phases");
@@ -104,7 +104,7 @@ const proof = {
   liveCalls: probes.filter((e) => !e.payload.replay).length,
   llm: { total: llmTotal, byProvider: Object.fromEntries(llmByProvider), cacheHits, cacheRate, cacheSaved },
   bugs: [...bugs.values()].map((b) => b.status),
-  verifiedFixes: verified.map((e) => e.payload.bugId),
+  verifiedFixes: verified.map((e) => (e.payload as { bugId?: string }).bugId),
   crosswalk: xw,
 };
 writeFileSync("proof.json", JSON.stringify(proof, null, 2));

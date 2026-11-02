@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { execFile } from "node:child_process";
-import path from "node:path";
 import { promisify } from "node:util";
 import type { EventBus } from "../events/log";
 import type { PushChannel, WorkspaceStore } from "../workspace/store";

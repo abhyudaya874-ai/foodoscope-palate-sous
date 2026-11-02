@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Palate + Sous (Foodoscope Fork It 2026, round 1)
 
-## Getting Started
+**Palate**: gamified profile cards (XP, ranks, streak borders, badges) derived purely from an append-only event log. **Sous**: an autonomous agent that probes the Foodoscope APIs, proves or disproves contract gaps, ships verified fixes, and generates `PROOF.md` — every number traceable to an event or file.
 
-First, run the development server:
+## Run (replay, ~5 min, no keys, no network)
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm demo:replay        # offline agent run -> events + reports + UI fixture
+pnpm dev                # http://localhost:3000 — press "▶ replay demo" (REPLAY badge)
+pnpm test && pnpm proof # suite + regenerated PROOF.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Live mode: copy `.env.example` → `.env.local`, add keys, `pnpm demo:record` (needs `FOODOSCOPE_API_KEY`), `tsx scripts/llm-smoke.ts` (LLM smoke). All API responses record to `fixtures/`; reruns replay offline.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Architecture
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Next.js 16 (App Router, TS, Tailwind). Append-only `events/*.jsonl` is the source of truth for XP/ranks/streaks and for `PROOF.md`. Loop: `probe → detect → fix → verify → ship → report` (`src/lib/agent/loop.ts`). LLM gateway: Groq / NVIDIA NIM / OpenRouter, OpenAI-compatible, fallback chain, budget caps (`BUDGET.json`), response cache in `fixtures/llm-cache/`. UI streams events over SSE (`/api/run`, `/api/run/[id]/stream`) into ai-elements blocks: Plan, Reasoning, Tool (provider/model/latency/tokens), Diff, CSV, Tests, Confirmation.
 
-## Learn More
+## Env vars
 
-To learn more about Next.js, take a look at the following resources:
+`GROQ_API_KEY` `NVIDIA_API_KEY` `OPENROUTER_API_KEY` `FOODOSCOPE_API_KEY` `COCKTAILDB_ENABLED` (gate; see honesty box). Missing keys → fallback/replay continues, never blocks.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Endpoints
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`POST /api/run` (replay run → `{runId}`) · `GET /api/run/[id]/stream?from=` (SSE, seq'd, resumable) · `POST /api/llm` (server-side gateway) · `/dev/workspace` (file/diff/CSV/terminal/tests panes).
 
-## Deploy on Vercel
+## Fingerprint
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`ApiKey not provided` → `Invalid API key` (401, Bearer auth gate fires before routing). Rate limit measured `x-ratelimit-limit: 25`/window (real header, `workspace/reports/limits.json`).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Findings (repro-gated; full list in PROOF.md)
+
+| ID | Status | Evidence |
+|---|---|---|
+| H2 param name `naturalSource`→`natural_source_name` | CONFIRMED | `fixtures/api/flavordb.entities.by.natural.source.923b967f.json` (400) + `.69fd2dc2.json` (200) |
+| H1 entity has no molecule array | CONFIRMED (scoped to sampled entities) | `fixtures/api/…69fd2dc2.json` |
+| B2 numeric fields string-encoded (`Calories:"832.0"`) | CONFIRMED | `fixtures/api/recipe2…d8de48bb.json` |
+| H3 taste/aroma mixing · H4 doc-vs-API counts · H5 crosswalk drift · H6 molecule-count stub | INCONCLUSIVE / scoped | see PROOF.md + hypotheses.json |
+
+Fix: `workspace/shim/index.ts` (param rewrite + numeric coercion). Verify: `workspace/tests/contract.test.ts` fails 2 without shim (`SOUS_SHIM=0`), 5/5 pass with it (`workspace/reports/verify-*.json`).
+
+## Docs
+
+`PROOF.md` (computed) · `docs/deck-outline.md` · `docs/video-script.md` · `docs/self-audit.md` · `docs/finale-plan.md` · `DECISIONS.md` · `workspace/openapi.inferred.yaml`.
+
+## Honesty box
+
+- Sous cannot patch the sponsor's server — it proposes mergeable fixes + a client shim; sponsor-facing writes require human confirmation.
+- Unmeasured values render `[measure]`; `NA` in data. No invented endpoints, stats, or comparisons.
+- The 3 confirmed bugs come from 3 real authenticated API calls (budget-stopped); everything else replays from those fixtures.
+- CocktailDB is disabled unless `COCKTAILDB_ENABLED=true` (age rule).
+- Only Groq returned a live response in testing; OpenRouter had no credits, NVIDIA rejected the catalog models — the fallback chain handles it.
