@@ -12,9 +12,20 @@ export function ModelSelector({
 }: {
   provider?: string; model?: string; health: Health; latencyMs?: number; onOpenChange?: () => void;
 }) {
-  const label = provider && model ? `${provider} · ${model.split("/").pop()}` : "Provider · not connected";
+  const label = provider && model ? `${provider} · ${model.split("/").pop()}` : provider ? `Provider · ${provider}` : "Provider · not connected";
+  if (health === "none") {
+    // guided state: labelled pill + how-to-fix hint (no interactive Select with no options)
+    return (
+      <span title="Add provider keys to ~/.config/palate-sous.env or .env.local to enable live LLM calls"
+        className="inline-flex h-7 items-center gap-2 rounded-md border border-line-1 bg-bg-1 px-2 text-[11px] text-text-2">
+        <span aria-hidden className="size-1.5 rounded-full bg-text-3" />
+        Provider · not connected
+        <span className="text-text-3">add keys to enable</span>
+      </span>
+    );
+  }
   return (
-    <Select open={health === "none" ? false : undefined} onOpenChange={onOpenChange}>
+    <Select onOpenChange={onOpenChange}>
       <SelectTrigger
         aria-label="model provider"
         className="h-7 w-auto gap-2 border-line-1 bg-bg-1 px-2 text-[11px] text-text-2 data-[placeholder]:text-text-2"
@@ -24,8 +35,8 @@ export function ModelSelector({
         {latencyMs !== undefined && <span className="tnum text-text-3">{latencyMs}ms</span>}
       </SelectTrigger>
       <SelectContent className="border-line-1 bg-bg-1 text-[12px] text-text-2">
-        <SelectItem value={model ?? "none"} className="text-text-1">
-          {provider && model ? `${provider} / ${model}` : "No provider key configured"}
+        <SelectItem value={model ?? provider ?? "none"} className="text-text-1">
+          {provider && model ? `${provider} / ${model}` : provider ? `${provider} · free tier` : "No provider key configured"}
         </SelectItem>
       </SelectContent>
     </Select>
