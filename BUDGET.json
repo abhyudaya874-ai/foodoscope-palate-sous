@@ -1,0 +1,14 @@
+{
+  "maxToolCallsPerRun": 40,
+  "maxApiCalls": 30,
+  "maxLlmTokensPerRun": 60000,
+  "perRoleTokenCaps": {
+    "router": 4000,
+    "planner": 16000,
+    "coder": 20000,
+    "matcher": 10000,
+    "writer": 10000
+  },
+  "foodoscopeTokenWallet": 100,
+  "comment": "foodoscopeTokenWallet deliberately low; a human raises it after checking trial terms."
+}
