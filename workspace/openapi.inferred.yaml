@@ -1,0 +1,91 @@
+# Inferred from live responses on 2026-11-02 (docs: unavailable — Postman collection
+# from another team + response probing). NOT official; every field below was observed.
+openapi: 3.0.0
+info:
+  title: Foodoscope API (inferred)
+  version: "inferred-2026-11-02"
+  description: Auth scheme and shapes inferred from real responses; see fixtures/api/*.
+servers:
+  - url: https://api.foodoscope.com
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: "Authorization: Bearer <key>. Absent key -> 400 {error:'ApiKey is not provided'}; invalid key -> 400 {error:'Invalid API key'} (both observed)."
+  schemas:
+    ErrorEnvelope:
+      type: object
+      properties:
+        url: { type: string }
+        method: { type: string }
+        error: { type: string }
+      # observed on 400/404
+    RecipeSummary:
+      type: object
+      properties:
+        _id: { type: string }
+        Recipe_id: { type: string }
+        Recipe_title: { type: string }
+        Calories: { type: string, description: "string-encoded number, e.g. '832.0' (observed)" }
+        cook_time: { type: string }
+        prep_time: { type: string }
+        servings: { type: string }
+        total_time: { type: string }
+        Region: { type: string }
+        Continent: { type: string }
+    FlavorEntity:
+      type: object
+      properties:
+        _id: { type: string }
+        entity_id: { type: integer }
+        category: { type: string }
+        category_readable: { type: string }
+        entity_alias: { type: string }
+        entity_alias_basket: { type: string }
+        entity_alias_readable: { type: string }
+        entity_alias_synonyms: { type: string }
+        entity_alias_url: { type: string, format: uri }
+        natural_source_name: { type: string }
+        natural_source_url: { type: string, format: uri }
+paths:
+  /recipe2-api/recipe-bytitle/recipeByTitle:
+    get:
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - { name: title, in: query, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: "{success, message, data: RecipeSummary[]}"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean }
+                  message: { type: string }
+                  data: { type: array, items: { $ref: "#/components/schemas/RecipeSummary" } }
+  /flavordb/entities/by-natural-source:
+    get:
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - name: natural_source_name
+          in: query
+          required: true
+          schema: { type: string }
+          description: "Postman-documented name 'naturalSource' is REJECTED (400 'Parameter natural_source_name cannot be empty'); actual name observed 200."
+        - { name: page, in: query, schema: { type: integer } }
+        - { name: size, in: query, schema: { type: integer } }
+      responses:
+        "200":
+          description: "{content: FlavorEntity[]}"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content: { type: array, items: { $ref: "#/components/schemas/FlavorEntity" } }
+        "400":
+          description: ErrorEnvelope or {statusCode, message, details}
+# Rate limits (measured from headers): x-ratelimit-limit: 25 per window (window not sent in headers).
+# 39 further FlavorDB paths documented in a third-party Postman collection (base cosylab.iiitd.edu.in:6969/flavordb) — unverified on api.foodoscope.com.

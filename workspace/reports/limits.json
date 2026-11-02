@@ -1,0 +1,9 @@
+{
+  "measuredAt": "2026-11-02T20:40:00+05:30",
+  "source": "response headers, api.foodoscope.com",
+  "x-ratelimit-limit": 25,
+  "x-ratelimit-window": "assumed 1 min (sponsor material says ~25 req/min; window header not sent)",
+  "tokenWallet": { "reportedByHuman": 200, "perCallCost": "[measure] (no token header in responses)" },
+  "authenticatedCallsMade": 3,
+  "callsRemainingInWindowAtStop": 22
+}
