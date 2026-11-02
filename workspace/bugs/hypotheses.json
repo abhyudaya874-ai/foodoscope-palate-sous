@@ -1,0 +1,53 @@
+[
+  {
+    "id": "H1",
+    "title": "Entity response lacks molecule array — no direct entity→molecule join",
+    "status": "CONFIRMED",
+    "evidence": [
+      "fixtures/api/flavordb.entities.by.natural.source.69fd2dc2.json"
+    ],
+    "note": "4 sampled entities expose no molecule/compound field; join needs a molecules endpoint or alias lookup",
+    "reproPath": "fixtures/api/flavordb.entities.by.natural.source.69fd2dc2.json"
+  },
+  {
+    "id": "H2",
+    "title": "by-natural-source rejects documented param 'naturalSource'; actual param is 'natural_source_name'",
+    "status": "CONFIRMED",
+    "evidence": [
+      "fixtures/api/flavordb.entities.by.natural.source.923b967f.json",
+      "fixtures/api/flavordb.entities.by.natural.source.69fd2dc2.json"
+    ],
+    "note": "documented param -> 400 (\"Parameter 'natural_source_name' cannot be empty.\"); corrected param -> 200",
+    "reproPath": "fixtures/api/flavordb.entities.by.natural.source.923b967f.json"
+  },
+  {
+    "id": "H3",
+    "title": "Taste vs aroma descriptors mixed in one field",
+    "status": "INCONCLUSIVE",
+    "evidence": [
+      "fixtures/api/flavordb.entities.by.natural.source.69fd2dc2.json"
+    ],
+    "note": "no descriptor field on sampled entities; needs molecules endpoint",
+    "reproPath": "fixtures/api/flavordb.entities.by.natural.source.69fd2dc2.json"
+  },
+  {
+    "id": "H4",
+    "title": "Ingredient counts differ between docs, UI and API",
+    "status": "INCONCLUSIVE",
+    "evidence": [
+      "fixtures/api/flavordb.entities.by.natural.source.69fd2dc2.json"
+    ],
+    "note": "website states \"1,000+ natural ingredients\" (foodoscope.com); measured natural_source_name=apple -> totalElements=4; global API count not measured within budget",
+    "reproPath": "fixtures/api/flavordb.entities.by.natural.source.69fd2dc2.json"
+  },
+  {
+    "id": "B2",
+    "title": "Recipe numeric fields (Calories, times, servings) are string-encoded",
+    "status": "CONFIRMED",
+    "evidence": [
+      "fixtures/api/recipe2.api.recipe.bytitle.recipebytitle.d8de48bb.json"
+    ],
+    "note": "5 numeric fields arrive as strings, e.g. Calories=\"832.0\"",
+    "reproPath": "fixtures/api/recipe2.api.recipe.bytitle.recipebytitle.d8de48bb.json"
+  }
+]

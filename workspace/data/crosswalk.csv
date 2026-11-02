@@ -1,0 +1,31 @@
+source,normalized,target,method,similarity,confidence
+jeera,jeera,cumin,alias,1,H
+haldi,haldi,turmeric,alias,1,H
+dhania,dhania,coriander,alias,1,H
+garam masala,garam_masala,NA,unmatched,0.333,H
+mustard seeds,mustard_seeds,NA,unmatched,0.538,H
+curry leaves,curry_leaves,NA,unmatched,0.75,H
+tamarind paste,tamarind_paste,NA,unmatched,0.571,H
+jaggery,jaggery,jaggery,exact,1,H
+ghee,ghee,NA,unmatched,0.333,H
+paneer,paneer,NA,unmatched,0.5,H
+basmati rice,basmati_rice,NA,unmatched,0.417,H
+cardamom,cardamom,cardamom,exact,1,H
+cloves,cloves,NA,unmatched,0.333,H
+cinnamon stick,cinnamon_stick,NA,unmatched,0.286,H
+bay leaf,bay_leaf,bay leaf,exact,1,H
+fenugreek seeds,fenugreek_seeds,NA,unmatched,0.6,H
+asafoetida,asafoetida,asafoetida,exact,1,H
+green chilli,green_chilli,NA,unmatched,0.5,H
+ginger paste,ginger_paste,NA,unmatched,0.5,H
+garlic cloves,garlic_cloves,NA,unmatched,0.308,H
+onion,onion,onion,exact,1,H
+tomato,tomato,tomato,exact,1,H
+potato,potato,potato,exact,1,H
+spinach,spinach,spinach,exact,1,H
+chickpea flour,chickpea_flour,chickpea flour,exact,1,H
+coconut milk,coconut_milk,NA,unmatched,0.583,H
+mint leaves,mint_leaves,NA,unmatched,0.455,H
+saffron strands,saffron_strands,NA,unmatched,0.467,H
+cashew nuts,cashew_nuts,NA,unmatched,0.545,H
+raisins,raisins,raisin,fuzzy,0.857,L

@@ -1,0 +1,19 @@
+{
+  "bugIds": [
+    "H2",
+    "B2"
+  ],
+  "failedBefore": true,
+  "passesAfter": true,
+  "before": {
+    "passed": 3,
+    "failed": 2,
+    "ok": false
+  },
+  "after": {
+    "passed": 1,
+    "failed": 0,
+    "ok": true
+  },
+  "ts": "2026-11-02T15:16:36.562Z"
+}

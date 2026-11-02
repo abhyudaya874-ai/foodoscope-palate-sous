@@ -1,1 +1,0 @@
-{"statusCode":400,"message":"Parameter 'natural_source_name' cannot be empty.","details":"uri=/flavordb/entities/by-natural-source?naturalSource=apple&page=0&size=5"}

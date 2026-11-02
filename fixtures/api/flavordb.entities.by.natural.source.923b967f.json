@@ -1,0 +1,1 @@
+{"url":"https://api.foodoscope.com/flavordb/entities/by-natural-source?naturalSource=apple","status":400,"body":{"statusCode":400,"message":"Parameter 'natural_source_name' cannot be empty.","details":"uri=/flavordb/entities/by-natural-source?naturalSource=apple&page=0&size=5"},"recordedAt":"2026-11-02T20:40:00+05:30"}
