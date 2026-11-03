@@ -53,9 +53,9 @@ export function useRunStream() {
     if (v && gate.current) decide(true);
   }, [decide]);
 
-  const attach = useCallback((id: string, from = 0) => {
+  const attach = useCallback((id: string, from = 0, speed = 1, fixture = "demo-run.jsonl") => {
     esRef.current?.close();
-    const es = new EventSource(`/api/run/${id}/stream?from=${from}`);
+    const es = new EventSource(`/api/run/${id}/stream?from=${from}&speed=${speed}&fixture=${fixture}`);
     esRef.current = es;
     for (const t of TYPES) {
       es.addEventListener(t, (e) => {
@@ -77,7 +77,7 @@ export function useRunStream() {
     const res = await fetch("/api/run", { method: "POST", body: JSON.stringify({ speed }) });
     const { runId: id } = (await res.json()) as { runId: string };
     setRunId(id);
-    attach(id);
+    attach(id, 0, speed);
   }, [attach, stop]);
 
   return { messages, running, runId, play, stop, attach, awaiting, decisions, decide, autoApprove, setAutoApprove };

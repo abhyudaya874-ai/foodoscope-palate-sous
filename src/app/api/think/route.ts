@@ -5,6 +5,7 @@ import { candidatesForRole } from "@/lib/llm/models.config";
 import { PROVIDERS, providerKey } from "@/lib/llm/providers";
 
 export const runtime = "nodejs";
+export const maxDuration = 60;
 
 const SYSTEM = `You are Sous, an autonomous agent that audits the Foodoscope food-data APIs (RecipeDB2, FlavorDB) for contract drift.
 Given a goal, think briefly about HOW you would approach it: which endpoints you would probe, which contract problems you would test for, and what evidence would prove or disprove each. You have NOT run anything yet: never state results, counts or findings as facts. Answer in at most 90 words.`;
