@@ -74,8 +74,14 @@ export function useRunStream() {
     lastSeq.current = 0;
     setMessages([]); setDecisions({});
     setRunning(true);
-    const res = await fetch("/api/run", { method: "POST", body: JSON.stringify({ speed }) });
-    const { runId: id } = (await res.json()) as { runId: string };
+    // The stream route serves replay-* ids statelessly, so if the POST is empty,
+    // redirected or times out (cold lambda, deploy swap) we mint our own id and go on.
+    let id = `replay-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`;
+    try {
+      const res = await fetch("/api/run", { method: "POST", body: JSON.stringify({ speed }) });
+      const j = (await res.json().catch(() => null)) as { runId?: string } | null;
+      if (res.ok && typeof j?.runId === "string") id = j.runId;
+    } catch { /* offline hiccup: stateless replay still works */ }
     setRunId(id);
     attach(id, 0, speed);
   }, [attach, stop]);
