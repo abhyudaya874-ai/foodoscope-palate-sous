@@ -43,3 +43,5 @@ Module B design note (browser-agent):
 - failure modes: invalid model output x2 => failed; blocked host x3 => blocked; loop => failed; maxBrowserSteps => budget
 - proving tests: reference/tests/browser.test.ts (9/9 pass)
 - exemplar copied: reference/src/lib/browser/* verbatim; glue only in scripts/run-browser.ts (launcher + ReplayDriver)
+
+ADR-3 | Vercel blocked the CLI prod deploy of c99c935 ("commit author doesn't have permission") after the project was linked to the GitHub repo | Vercel checks HEAD commit author against team members; `devin@local` maps to no one | deploy commits authored as the repo owner's GitHub noreply; Devin attribution stays in trailers | touched: none (deploy-only fix)
