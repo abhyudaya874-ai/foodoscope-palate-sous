@@ -1,4 +1,4 @@
-# Pitch narration — read this while recording (≈600 words ≈ 4:50 with action pauses)
+# Pitch narration — read this while recording (≈600 words ≈ 4:55 with action pauses; rubric cap 5:00)
 
 Cues in [brackets] are actions, not words. Pause one breath at every ¶. Speak over visuals, never ahead of them.
 

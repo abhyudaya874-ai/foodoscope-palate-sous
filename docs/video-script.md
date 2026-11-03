@@ -1,4 +1,4 @@
-# Pitch video — complete run-of-show (target ~5:00; if the rubric enforces 3:30–4:30, use the cut list)
+# Pitch video — complete run-of-show (target 5:00 — the rubric's hard cap; beats sum to 5:00)
 
 Every number you say exists in `PROOF.md` with a source tag. If it shows `[measure]`, don't say the number.
 Story spine: **their problems → our agent fixing them live → proof → what the sponsor gets.**
@@ -30,7 +30,7 @@ Story spine: **their problems → our agent fixing them live → proof → what 
 | 5:10–5:25 | Split: `PROOF.md` honesty box + the competitor board. | "Why this wins: Foodpairing does molecular pairing — but it's closed and paid. Spoonacular has no molecule layer. MyFitnessPal plus ChatGPT has no chemistry and no receipts. We don't claim 'only we' — we claim proof: an agent that audits the sponsor's own API, ships mergeable fixes, and hands CoSy Lab a free QA pipeline — the exact thing their Bug Bounty hamper rewards." |
 | 5:25–5:35 | App hero screen. | "Palate plus Sous. Give it a goal. Watch it work. Every claim keeps its receipt." |
 
-## If you must fit 3:30–4:30 (rubric range)
+## If you must fit 3:30–4:30
 Cut in this order, logging each: (1) the code-walkthrough beat (4:15–4:35), (2) the gates beat (4:35–4:50), (3) the Links-tab beat (4:00–4:15), (4) the second approval click. Keep: problem, run, tests red→green, approvals, citations, browser, proof, competitors, close.
 
 ## What you're running (for the description / README link)
