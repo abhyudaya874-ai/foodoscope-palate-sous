@@ -40,4 +40,5 @@ export const config = {
     get foodoscope() { return env("FOODOSCOPE_API_KEY"); },
   },
   cocktailDbEnabled: () => env("COCKTAILDB_ENABLED") === "true",
+  onVercel: () => env("VERCEL") === "1",
 };
