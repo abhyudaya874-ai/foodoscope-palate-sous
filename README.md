@@ -26,6 +26,10 @@
 |---|---|
 | ![Sources popover](docs/ui/after/08-sources.png) | ![Mobile](docs/ui/after/09-mobile-idle.png) |
 
+## Live
+
+**Deployed: https://foodoscope-six.vercel.app** — replay mode works with zero keys (the provider pill shows the honest "not connected" state; add keys in the Vercel dashboard to enable live thinking).
+
 ## Run it yourself (5 minutes)
 
 **Replay first — no keys, no network needed:**
